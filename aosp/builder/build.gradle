@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':jdk-1_7')
+    api project(':bouncycastle')
+
+    api project(':aosp:annotations')
+    api project(':aosp:builder-test-api')
+    api project(':aosp:manifest-merger')
+    api project(':aosp:profile')
+
+    api project(':aosp:sdklib')
+    api project(':aosp:sdk-common')
+    api project(':aosp:common')
+    api project(':aosp:ddmlib')
+
+    api "com.android.support:support-annotations:$supportLibVersion"
+    api "com.android.support:support-v4:$supportLibVersion"
+    api 'com.google.guava:guava:25.1-android'
+
+    api 'com.squareup:javawriter:2.5.0'
+}

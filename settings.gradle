@@ -1,0 +1,28 @@
+include ':common'
+include ':app', ':treeview', ':androidlogcat'
+include ':bouncycastle', ':jdk-1_7', ':dx'
+
+include ':aosp:annotations'
+include ':aosp:dvlib'
+include ':aosp:layoutlib-api'
+include ':aosp:sdklib'
+include ':aosp:sdk-common'
+include ':aosp:common'
+include ':aosp:ddmlib'
+include ':aosp:builder'
+include ':aosp:builder-model'
+include ':aosp:builder-test-api'
+include ':aosp:manifest-merger'
+include ':aosp:profile'
+include ':aosp:project-test-lib'
+
+include ':aosp:gradle'
+include ':aosp:lint'
+include ':aosp:lint-api'
+include ':aosp:lint-checks'
+
+include ':lib-google-java-format'
+include ':lib-decompiler'
+include ':lib-android-compiler'
+
+include ':lib-n-ide'

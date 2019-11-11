@@ -1,0 +1,58 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 8
+        versionName "N-IDE v10"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs += "src/main/res-file-expoler"
+            res.srcDirs += "src/main/res-style"
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api 'com.google.code.gson:gson:2.8.1'
+    api 'com.anjlab.android.iab.v3:library:1.0.44'
+
+    api 'com.yqritc:recyclerview-flexibledivider:1.2.9'
+    api 'org.apmem.tools:layouts:1.10@aar'
+    api 'com.makeramen:roundedimageview:2.2.1'
+    api 'com.sothree.slidinguppanel:library:3.4.0'
+    //noinspection GradleDependency do not use latest version, java 8 cause crash
+    api 'commons-io:commons-io:2.3'
+    api 'com.simplecityapps:recyclerview-fastscroll:1.0.18'
+    api 'org.apache.commons:commons-lang3:3.7'
+    api 'com.google.guava:guava:25.1-android'
+    api 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
+
+    api "com.android.support:appcompat-v7:$supportLibVersion"
+    api "com.android.support:support-v4:$supportLibVersion"
+    api "com.android.support:support-vector-drawable:$supportLibVersion"
+    api "com.android.support:cardview-v7:$supportLibVersion"
+    api "com.android.support:support-annotations:$supportLibVersion"
+    api "com.android.support:design:$supportLibVersion"
+    api "com.android.support:preference-v7:$supportLibVersion"
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.pluscubed.logcat">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
+
+    <application
+        android:allowBackup="true">
+
+        <activity
+            android:name=".ui.LogcatActivity"
+            android:configChanges="screenSize|orientation"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/logcat_shortcuts"/>
+        </activity>
+
+        <activity android:name=".ui.RecordLogDialogActivity"/>
+        <activity android:name=".ui.SettingsActivity"/>
+        <service android:name="com.pluscubed.logcat.LogcatRecordingService"/>
+        <service android:name="com.pluscubed.logcat.CrazyLoggerService"/>
+
+    </application>
+</manifest>

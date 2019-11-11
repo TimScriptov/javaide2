@@ -1,0 +1,61 @@
+//noinspection GradleDependency
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/INDEX.LIST'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    api project(':bouncycastle')
+    api project(':dx')
+    api project(':jdk-1_7')
+    api project(':aosp:builder')
+    api project(':common')
+    api 'org.eclipse.jdt.core.compiler:ecj:4.6.1'
+    api 'net.sf.kxml:kxml2:2.3.0'
+
+    //api 'org.gradle:gradle-core:2.2.1'
+    api "com.android.support:support-annotations:$supportLibVersion"
+    api "com.android.support:support-v4:$supportLibVersion"
+
+    api 'com.google.guava:guava:25.1-android'
+    //noinspection GradleDependency newer version cause crash
+    api 'commons-io:commons-io:2.3'
+    api 'commons-codec:commons-codec:1.10'
+    api 'org.apache.maven:maven-project:2.2.1'
+    api 'com.google.code.gson:gson:2.8.1'
+}

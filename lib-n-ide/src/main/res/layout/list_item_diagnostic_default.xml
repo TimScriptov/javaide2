@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imageview"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:padding="2dp"
+            app:srcCompat="@drawable/baseline_warning_black_18"
+            tools:tint="#d50000" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/txt_line_col"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minEms="4"
+            android:padding="4dp"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="@dimen/smallest_text_size"
+            tools:text="1222:222" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/txt_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:padding="4dp"
+            android:singleLine="true"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="@dimen/smallest_text_size"
+            tools:text="/mnt/sdcard/src/c/examples/sssmain.c" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txt_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="@dimen/smallest_text_size"
+        tools:text="Long message Long message Long message Long messageLong messageLong messageLong messageLong messageLong message" />
+
+</LinearLayout>

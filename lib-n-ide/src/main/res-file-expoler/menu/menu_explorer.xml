@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_goto_home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/home"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/add_folder_menu"
+        android:icon="@drawable/baseline_add_circle_outline_24"
+        android:title="@string/create_folder"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/paste_menu"
+        android:title="@string/paste"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/baseline_search_24"
+        android:title="@string/filter_by_name"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/show_hidden_files_menu"
+        android:checkable="true"
+        android:checked="false"
+        android:title="@string/show_hidden_files"
+        app:showAsAction="never" />
+    <group
+        android:id="@+id/sort_group_menu"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/sort_by_name_menu"
+            android:checked="true"
+            android:title="@string/sort_by_name"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/sort_by_datetime_menu"
+            android:checked="false"
+            android:title="@string/sort_by_datetime"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/sort_by_size_menu"
+            android:checked="false"
+            android:title="@string/sort_by_size"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/sort_by_type_menu"
+            android:checked="false"
+            android:title="@string/sort_by_type"
+            app:showAsAction="never" />
+    </group>
+</menu>

@@ -1,0 +1,133 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "com.duy.compiler.javanide"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        multiDexEnabled true
+        versionCode 45
+        versionName "1.4.5"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs += "src/main/res-color-picker"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // Map for the version code that gives each ABI a value.
+    applicationVariants.all { variant ->
+        Properties props = new Properties()
+        def propFile = new File(rootProject.projectDir, "signing.properties")
+        if (propFile.exists()) {
+            props.load(new FileInputStream(propFile))
+            buildConfigField "String", "BASE64_KEY", "\"" + props['BASE64_KEY'] + "\""
+            buildConfigField "String", "SKU_PREMIUM", "\"" + props['SKU_PREMIUM'] + "\""
+        } else {
+            buildConfigField "String", "BASE64_KEY", "\"\""
+            buildConfigField "String", "SKU_PREMIUM", "\"\""
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    lintOptions {
+        disable 'MissingTranslation'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/plexus/components.xml'
+        exclude 'META-INF/INDEX.LIST'
+    }
+}
+
+
+configurations {
+    all {
+        exclude group: 'commons-logging', module: 'commons-logging'
+        resolutionStrategy.force 'junit:junit:4.12'
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    api project(':treeview')
+    api project(':lib-android-compiler')
+    api project(':lib-google-java-format')
+    api project(':androidlogcat')
+    api project(':common')
+
+    api project(':lib-n-ide')
+
+    //firebase sdk
+    api "com.google.firebase:firebase-core:16.0.0"
+    api 'com.crashlytics.sdk.android:crashlytics:2.9.3'
+
+    api 'io.github.kobakei:ratethisapp:1.2.0'
+    api 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
+    api 'com.miguelcatalan:materialsearchview:1.4.0'
+
+    /*Lib n-ide*/
+    api 'com.google.code.gson:gson:2.8.1'
+    api 'com.anjlab.android.iab.v3:library:1.0.44'
+    api 'org.apmem.tools:layouts:1.10@aar'
+    api 'com.makeramen:roundedimageview:2.2.1'
+    api 'com.yqritc:recyclerview-flexibledivider:1.2.9'
+    api 'com.sothree.slidinguppanel:library:3.4.0'
+    //noinspection GradleDependency newer version cause crash
+    api ('commons-io:commons-io:2.3'){
+        transitive = true
+    }
+
+    api 'com.simplecityapps:recyclerview-fastscroll:1.0.18'
+    api 'org.apache.commons:commons-lang3:3.7'
+    api 'com.google.guava:guava:25.1-android'
+    api 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
+
+    //android compat
+    api 'com.android.support:multidex:1.0.3'
+    api "com.android.support:recyclerview-v7:$supportLibVersion"
+    api "com.android.support:appcompat-v7:$supportLibVersion"
+    api "com.android.support:support-v4:$supportLibVersion"
+    api "com.android.support:support-vector-drawable:$supportLibVersion"
+    api "com.android.support:cardview-v7:$supportLibVersion"
+    api "com.android.support:support-annotations:$supportLibVersion"
+    api "com.android.support:design:$supportLibVersion"
+    api "com.android.support:preference-v7:$supportLibVersion"
+}
+
+apply plugin: 'com.google.gms.google-services'

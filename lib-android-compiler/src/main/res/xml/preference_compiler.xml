@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Java options">
+        <ListPreference
+            android:defaultValue="1.7"
+            android:entries="@array/entries_java_versions"
+            android:entryValues="@array/entries_java_versions"
+            android:key="@string/key_pref_source_compatibility"
+            android:title="Source compatibility">
+
+        </ListPreference>
+        <ListPreference
+            android:defaultValue="1.7"
+            android:entries="@array/entries_java_versions"
+            android:entryValues="@array/entries_java_versions"
+            android:key="@string/key_pref_target_compatibility"
+            android:title="Target compatibility">
+
+        </ListPreference>
+        <EditTextPreference
+            android:defaultValue="UTF-8"
+            android:enabled="false"
+            android:key="@string/key_pref_source_encoding"
+            android:title="Encoding" />
+
+
+        <EditTextPreference
+            android:defaultValue="@string/default_classpath"
+            android:key="@string/key_classpath"
+            android:summary="@string/classpath_desc"
+            android:title="Classpath (android.jar)">
+
+        </EditTextPreference>
+
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/format_types"
+            android:entryValues="@array/format_type_value"
+            android:key="@string/key_format_type"
+            android:summary="google-java-format is a program that reformats Java source code to comply with Google Java Style."
+            android:title="@string/pref_title_java_format_type" />
+
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

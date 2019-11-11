@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:paddingBottom="2dp"
+    android:paddingTop="2dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/buttonsContainer"
+        android:layout_toStartOf="@+id/buttonsContainer"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/img_arrow"
+            android:layout_width="18dp"
+            android:layout_height="24dp"
+            android:tint="@color/dark.color_folder"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_white_24dp" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/img_icon"
+            android:layout_width="18dp"
+            android:layout_height="24dp"
+            app:srcCompat="@drawable/ic_jar_file_white" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/node_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:textColor="@color/dark.color_folder"
+            android:textSize="12sp"
+            tools:text="MainActivity.java" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/buttonsContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/linearLayout"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/img_add"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="?selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/ic_add_white_24dp" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/img_delete"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="?selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/ic_close_white_24dp" />
+    </LinearLayout>
+</RelativeLayout>
