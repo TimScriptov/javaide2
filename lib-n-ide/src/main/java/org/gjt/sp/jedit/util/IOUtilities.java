@@ -1,6 +1,6 @@
 package org.gjt.sp.jedit.util;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import java.io.Closeable;
 import java.io.File;

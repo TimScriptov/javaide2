@@ -17,8 +17,8 @@
 
 package com.duy.common.purchase;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.anjlab.android.iab.v3.BillingProcessor;

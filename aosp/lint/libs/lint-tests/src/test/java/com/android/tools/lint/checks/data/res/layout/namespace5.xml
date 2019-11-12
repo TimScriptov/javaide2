@@ -1,4 +1,4 @@
-<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/auto-res/"
     android:layout_width="match_parent"
@@ -15,4 +15,4 @@
         app:layout_row="0"
         android:text="Button" />
 
-</android.support.v7.widget.GridLayout>
+</androidx.appcompat.widget.GridLayout>

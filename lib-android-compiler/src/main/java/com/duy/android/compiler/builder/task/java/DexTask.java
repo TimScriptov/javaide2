@@ -1,6 +1,6 @@
 package com.duy.android.compiler.builder.task.java;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 import com.android.dx.command.dexer.DxContext;

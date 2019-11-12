@@ -17,18 +17,20 @@
 
 package com.duy.ide.diagnostic.view;
 
-import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.v4.app.Fragment;
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.PagerAdapter;
+
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.duy.ide.editor.editor.R;
 
 
-class DiagnosticPagerAdapter extends android.support.v4.view.PagerAdapter {
+class DiagnosticPagerAdapter extends PagerAdapter {
     private Fragment fragment;
 
     public DiagnosticPagerAdapter(Fragment fragment) {

@@ -18,7 +18,7 @@
 package com.duy.ide.editor.pager;
 
 import android.os.Parcel;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.commonsware.cwac.pager.SimplePageDescriptor;
 

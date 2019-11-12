@@ -18,7 +18,7 @@
 package com.duy.ide.editor.view;
 
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public interface IEditActionSupport {
     void undo();

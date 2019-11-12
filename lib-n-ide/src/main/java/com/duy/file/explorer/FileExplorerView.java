@@ -17,7 +17,7 @@
 
 package com.duy.file.explorer;
 
-import android.support.v7.view.ActionMode;
+import androidx.appcompat.view.ActionMode;
 
 /**
  * @author Jecelyin Peng <jecelyin@gmail.com>

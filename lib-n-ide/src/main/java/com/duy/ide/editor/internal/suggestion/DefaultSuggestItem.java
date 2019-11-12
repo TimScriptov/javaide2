@@ -17,7 +17,7 @@
 
 package com.duy.ide.editor.internal.suggestion;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.duy.ide.editor.view.IEditAreaView;
 

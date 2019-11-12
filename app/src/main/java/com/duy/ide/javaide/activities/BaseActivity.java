@@ -18,8 +18,8 @@
 package com.duy.ide.javaide.activities;
 
 import android.content.SharedPreferences;
-import android.support.annotation.StyleRes;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.StyleRes;
+import androidx.appcompat.widget.Toolbar;
 
 import com.duy.ide.R;
 import com.jecelyin.editor.v2.ThemeSupportActivity;

@@ -19,7 +19,7 @@ package com.duy.ide.javaide.theme;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 
 import com.duy.common.purchase.InAppPurchaseHelper;
 import com.duy.ide.R;

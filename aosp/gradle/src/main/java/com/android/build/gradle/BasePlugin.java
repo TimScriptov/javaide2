@@ -16,7 +16,7 @@
 
 package com.android.build.gradle;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.android.annotations.VisibleForTesting;
 import com.android.build.gradle.internal.ApiObjectFactory;

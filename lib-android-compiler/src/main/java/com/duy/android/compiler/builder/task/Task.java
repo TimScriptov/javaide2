@@ -1,7 +1,7 @@
 package com.duy.android.compiler.builder.task;
 
 import android.content.Context;
-import android.support.annotation.WorkerThread;
+import androidx.annotation.WorkerThread;
 
 import com.duy.android.compiler.builder.IBuilder;
 import com.duy.android.compiler.project.JavaProject;

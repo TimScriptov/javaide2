@@ -19,8 +19,8 @@
 package com.jecelyin.common.utils;
 
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorInt;
-import android.support.v4.graphics.drawable.DrawableCompat;
+import androidx.annotation.ColorInt;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 /**
  * @author Jecelyin Peng <jecelyin@gmail.com>

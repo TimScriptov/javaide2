@@ -130,7 +130,7 @@ public class LibraryTaskManager extends TaskManager {
             }
             packageRes.configure(tasks, new Action<Task>() {
                 @Override
-                public void execute(@android.support.annotation.NonNull Task task) {
+                public void execute(@androidx.annotation.NonNull Task task) {
                     MergeResources mergeResourcesTask = (MergeResources) task;
                     mergeResourcesTask.setPublicFile(new File(
                             variantScope.getGlobalScope().getIntermediatesDir(),

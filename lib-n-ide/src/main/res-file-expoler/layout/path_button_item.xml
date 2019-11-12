@@ -10,7 +10,7 @@
     android:gravity="center_vertical"
     android:padding="4dp">
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:textColor="?android:textColorPrimary"
         tools:text="Path">
 
-    </android.support.v7.widget.AppCompatTextView>
+    </androidx.appcompat.widget.AppCompatTextView>
 
     <com.duy.common.view.TintImageView
         android:layout_width="wrap_content"

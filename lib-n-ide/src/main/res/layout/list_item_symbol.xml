@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/symbol_bar_height"
     android:layout_height="@dimen/symbol_bar_height"
@@ -8,4 +8,4 @@
     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
     tools:text="{">
 
-</android.support.v7.widget.AppCompatTextView>
+</androidx.appcompat.widget.AppCompatTextView>

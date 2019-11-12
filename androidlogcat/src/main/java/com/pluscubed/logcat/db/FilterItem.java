@@ -1,6 +1,6 @@
 package com.pluscubed.logcat.db;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.Comparator;
 

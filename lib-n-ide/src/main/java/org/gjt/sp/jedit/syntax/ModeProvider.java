@@ -17,7 +17,7 @@ package org.gjt.sp.jedit.syntax;
 
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.duy.ide.file.model.AssetFile;
 import com.duy.ide.file.model.IFileObject;

@@ -18,7 +18,7 @@
 package com.duy.ide.diagnostic.suggestion;
 
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.io.File;
 

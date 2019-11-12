@@ -1,6 +1,6 @@
 package com.android.build.gradle;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.android.build.gradle.internal.DependencyManager;
 import com.android.build.gradle.internal.LibraryTaskManager;

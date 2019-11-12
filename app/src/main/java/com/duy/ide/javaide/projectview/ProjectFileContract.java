@@ -17,8 +17,8 @@
 
 package com.duy.ide.javaide.projectview;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.duy.android.compiler.project.JavaProject;
 import com.unnamed.b.atv.model.TreeNode;

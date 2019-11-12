@@ -18,7 +18,7 @@
 package com.duy.ide.javaide.projectview.dialog;
 
 import android.content.Context;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 
 

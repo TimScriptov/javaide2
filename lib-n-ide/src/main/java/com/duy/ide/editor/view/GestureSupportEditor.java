@@ -20,7 +20,7 @@ package com.duy.ide.editor.view;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Handler;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.text.Layout;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;

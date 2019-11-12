@@ -18,7 +18,7 @@
 package com.duy.ide.editor.text;
 
 import android.graphics.Rect;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.TextUtils;

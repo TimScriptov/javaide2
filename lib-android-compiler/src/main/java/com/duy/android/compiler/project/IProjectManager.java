@@ -1,6 +1,6 @@
 package com.duy.android.compiler.project;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.io.File;
 

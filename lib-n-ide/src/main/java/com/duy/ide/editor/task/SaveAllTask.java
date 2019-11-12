@@ -18,7 +18,7 @@
 package com.duy.ide.editor.task;
 
 import android.os.AsyncTask;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.duy.common.DLog;
 import com.duy.ide.core.api.IdeActivity;

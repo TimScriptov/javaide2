@@ -17,7 +17,7 @@
 
 package com.duy.ide.javaide.editor.autocomplete.util;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.Layout;
 import android.text.TextUtils;
 import android.widget.EditText;

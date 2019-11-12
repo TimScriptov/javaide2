@@ -17,7 +17,7 @@
 
 package com.duy.ide.editor;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public interface IEditorStateListener {
     void onEditorViewCreated(@NonNull IEditorDelegate editorDelegate);

@@ -18,7 +18,7 @@
 package com.duy.ide.code.format;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.duy.ide.code.api.CodeFormatProvider;
 import com.duy.ide.code.api.CodeFormatter;

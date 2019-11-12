@@ -17,7 +17,7 @@
 
 package com.duy.ide.editor;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.duy.ide.code.api.CodeFormatProvider;
 import com.duy.ide.code.api.SuggestionProvider;

@@ -17,7 +17,7 @@
 
 package com.duy.ide.diagnostic.model;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.google.common.base.Objects;
 

@@ -17,8 +17,8 @@
 package com.jecelyin.editor.v2.widget.menu;
 
 
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IdRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IdRes;
 
 import com.duy.ide.editor.editor.R;
 

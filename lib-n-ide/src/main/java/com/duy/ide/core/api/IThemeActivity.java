@@ -17,7 +17,7 @@
 
 package com.duy.ide.core.api;
 
-import android.support.annotation.StyleRes;
+import androidx.annotation.StyleRes;
 
 public interface IThemeActivity {
     @StyleRes

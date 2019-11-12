@@ -19,11 +19,11 @@ package com.duy.ide.diagnostic;
 
 import android.annotation.SuppressLint;
 import android.os.Handler;
-import android.support.annotation.MainThread;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.WorkerThread;
-import android.support.v4.util.Pair;
+import androidx.annotation.MainThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.WorkerThread;
+import androidx.core.util.Pair;
 import android.view.View;
 
 import com.duy.common.DLog;

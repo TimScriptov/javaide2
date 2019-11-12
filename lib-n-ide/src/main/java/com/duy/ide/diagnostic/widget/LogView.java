@@ -18,7 +18,7 @@
 package com.duy.ide.diagnostic.widget;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatTextView;
+import androidx.appcompat.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
 public class LogView extends AppCompatTextView {

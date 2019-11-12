@@ -17,7 +17,7 @@
 
 package com.duy.ide.code.model;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.duy.ide.code.api.CodeFormatter;
 

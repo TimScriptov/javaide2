@@ -107,7 +107,7 @@ public class ZipAlign extends DefaultTask implements FileSupplier {
         }
 
         @Override
-        public void execute(@android.support.annotation.NonNull ZipAlign zipAlign) {
+        public void execute(@androidx.annotation.NonNull ZipAlign zipAlign) {
             ((ApkVariantOutputData) scope.getVariantOutputData()).zipAlignTask = zipAlign;
             zipAlign.setInputFile(scope.getPackageApk());
             zipAlign.setOutputFile(scope.getGlobalScope().getProject().file(

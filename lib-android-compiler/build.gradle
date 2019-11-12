@@ -49,8 +49,8 @@ dependencies {
     api 'net.sf.kxml:kxml2:2.3.0'
 
     //api 'org.gradle:gradle-core:2.2.1'
-    api "com.android.support:support-annotations:$supportLibVersion"
-    api "com.android.support:support-v4:$supportLibVersion"
+    api 'androidx.annotation:annotation:1.0.0'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
 
     api 'com.google.guava:guava:25.1-android'
     //noinspection GradleDependency newer version cause crash

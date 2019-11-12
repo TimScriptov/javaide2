@@ -18,8 +18,8 @@ package com.jecelyin.editor.v2.dialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.view.ActionMode;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.view.ActionMode;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;

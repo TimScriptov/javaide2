@@ -18,7 +18,7 @@
 package com.duy.ide.javaide.editor.format;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.duy.ide.code.api.CodeFormatter;
 import com.duy.ide.javaide.setting.AppSetting;

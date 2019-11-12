@@ -1,7 +1,7 @@
 package com.duy.android.compiler.project;
 
 import android.content.Context;
-import android.support.annotation.CallSuper;
+import androidx.annotation.CallSuper;
 import android.util.Log;
 
 import com.android.annotations.NonNull;

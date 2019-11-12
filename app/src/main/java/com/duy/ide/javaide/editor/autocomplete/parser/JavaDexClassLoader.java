@@ -17,7 +17,7 @@
 
 package com.duy.ide.javaide.editor.autocomplete.parser;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.android.annotations.Nullable;
 import com.duy.android.compiler.project.JavaProject;

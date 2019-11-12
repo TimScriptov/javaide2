@@ -18,7 +18,7 @@
 package com.duy.ide.editor.theme.model;
 
 import android.graphics.Color;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.duy.ide.editor.theme.SyntaxUtilities;
 import com.jecelyin.common.utils.DLog;

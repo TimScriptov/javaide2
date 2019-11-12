@@ -17,7 +17,7 @@
 
 package com.duy.file.explorer.util;
 
-import android.support.annotation.IntDef;
+import androidx.annotation.IntDef;
 
 import com.duy.file.explorer.io.JecFile;
 

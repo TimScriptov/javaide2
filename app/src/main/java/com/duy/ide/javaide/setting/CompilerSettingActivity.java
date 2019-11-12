@@ -20,8 +20,8 @@ package com.duy.ide.javaide.setting;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 
 import com.duy.ide.R;
 import com.duy.ide.javaide.activities.BaseActivity;

@@ -20,7 +20,7 @@ package com.jecelyin.editor.v2.dialog;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 
 import com.duy.ide.editor.editor.R;
 import com.jecelyin.editor.v2.common.Command;

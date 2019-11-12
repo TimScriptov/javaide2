@@ -17,7 +17,7 @@
 
 package com.duy.ide.diagnostic.parser;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.duy.ide.diagnostic.model.Message;
 import com.duy.ide.diagnostic.model.SourceFilePosition;

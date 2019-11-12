@@ -14,7 +14,7 @@
         android:background="?android:windowBackground"
         android:gravity="center_vertical">
 
-        <android.support.v7.widget.AppCompatTextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txt_project_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
             android:layout_alignParentTop="true"
             android:gravity="center">
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_add_dependencies"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -47,7 +47,7 @@
                 android:foreground="?attr/selectableItemBackground"
                 app:srcCompat="@drawable/ic_add_white_24dp" />
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_refresh"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -56,7 +56,7 @@
                 app:srcCompat="@drawable/ic_refresh_white_24dp" />
 
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_collapse"
                 android:layout_width="24dp"
                 android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                 android:foreground="?attr/selectableItemBackground"
                 app:srcCompat="@drawable/ic_fullscreen_exit_white_24dp" />
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_expand_all"
                 android:layout_width="24dp"
                 android:layout_height="24dp"

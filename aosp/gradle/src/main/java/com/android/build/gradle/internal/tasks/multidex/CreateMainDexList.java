@@ -1,6 +1,6 @@
 package com.android.build.gradle.internal.tasks.multidex;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.android.build.gradle.internal.PostCompilationData;
 import com.android.build.gradle.internal.scope.TaskConfigAction;

@@ -22,14 +22,14 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:text="@string/create_new_file"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-    <android.support.v7.widget.AppCompatTextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_path"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

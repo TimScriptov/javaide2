@@ -1,6 +1,6 @@
 package com.duy.android.compiler.java;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.android.utils.FileUtils;
 

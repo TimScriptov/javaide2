@@ -20,6 +20,6 @@ android {
 }
 
 dependencies {
-    api "com.android.support:support-v4:$supportLibVersion"
-    api "com.android.support:appcompat-v7:$supportLibVersion"
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+    api 'androidx.appcompat:appcompat:1.0.0'
 }

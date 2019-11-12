@@ -17,7 +17,7 @@
 package com.duy.ide.diagnostic.parser;
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * Indicates that an error occurred while parsing the output of a compiler.

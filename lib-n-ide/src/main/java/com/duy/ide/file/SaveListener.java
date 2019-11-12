@@ -17,7 +17,7 @@
 
 package com.duy.ide.file;
 
-import android.support.annotation.UiThread;
+import androidx.annotation.UiThread;
 
 /**
  * @author Jecelyin Peng <jecelyin@gmail.com>

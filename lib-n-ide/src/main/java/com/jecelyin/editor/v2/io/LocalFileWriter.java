@@ -16,7 +16,7 @@
 
 package com.jecelyin.editor.v2.io;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.GetChars;
 
 import org.apache.commons.io.IOUtils;

@@ -17,7 +17,7 @@
 
 package com.duy.ide.javaide.editor.autocomplete.model;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.Editable;
 
 import com.duy.ide.BuildConfig;
