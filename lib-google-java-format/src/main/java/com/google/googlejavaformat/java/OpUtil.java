@@ -1,21 +1,18 @@
 package com.google.googlejavaformat.java;
 
-import static com.sun.tools.javac.tree.JCTree.POSTDEC;
-import static com.sun.tools.javac.tree.JCTree.POSTINC;
-import static com.sun.tools.javac.tree.JCTree.PREDEC;
-import static com.sun.tools.javac.tree.JCTree.PREINC;
+import static com.sun.tools.javac.tree.JCTree.Tag;
 
 /**
  * Created by Duy on 22-Jul-17.
  */
 
 public class OpUtil {
-    public static boolean isPostUnaryOp(int tag) {
-        return tag == POSTINC || tag == POSTDEC;
+    public static boolean isPostUnaryOp(Tag tag) {
+        return tag == Tag.POSTINC || tag == Tag.POSTDEC;
     }
 
-    public boolean isIncOrDecUnaryOp(int tag) {
-        return (tag == PREINC || tag == PREDEC || tag == POSTINC || tag == POSTDEC);
+    public boolean isIncOrDecUnaryOp(Tag tag) {
+        return (tag == Tag.PREINC || tag == Tag.PREDEC || tag == Tag.POSTINC || tag == Tag.POSTDEC);
     }
 
 }

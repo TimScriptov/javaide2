@@ -24,6 +24,7 @@ import com.sun.source.tree.ParenthesizedTree;
 import com.sun.source.tree.Tree;
 import com.sun.source.util.TreePath;
 import com.sun.tools.javac.tree.JCTree;
+import com.sun.tools.javac.tree.JCTree.Tag;
 import com.sun.tools.javac.tree.Pretty;
 import com.sun.tools.javac.tree.TreeInfo;
 
@@ -31,9 +32,6 @@ import java.io.IOError;
 import java.io.IOException;
 
 import javax.lang.model.element.Name;
-
-import static com.sun.tools.javac.tree.JCTree.ANNOTATED_TYPE;
-
 
 /**
  * Utilities for working with {@link Tree}s.
@@ -104,8 +102,8 @@ public class Trees {
 //        if (assignOp) {
 //            tag = tag.noAssignOp();
 //        }
-        int tag = ((JCTree) expression).getTag();
-        if (tag == JCTree.ASSIGN) {
+        Tag tag = ((JCTree) expression).getTag();
+        if (tag == Tag.ASSIGN) {
             return "=";
         }
         boolean assignOp = expression instanceof CompoundAssignmentTree;

@@ -20,6 +20,7 @@ package com.duy.ide.javaide.editor.autocomplete.internal;
 import com.android.annotations.NonNull;
 import com.android.annotations.Nullable;
 import com.duy.ide.editor.internal.suggestion.Editor;
+import com.sun.tools.javac.tree.EndPosTable;
 import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.tree.JCTree.JCAssign;
 import com.sun.tools.javac.tree.JCTree.JCAssignOp;
@@ -49,11 +50,10 @@ import com.sun.tools.javac.tree.JCTree.JCVariableDecl;
 import com.sun.tools.javac.tree.JCTree.JCWhileLoop;
 
 import java.util.List;
-import java.util.Map;
 
 public class ExpressionResolver {
     private int mCursor;
-    private Map<JCTree, Integer> mEndPositions;
+    private EndPosTable mEndPositions;
     private JCTree.JCCompilationUnit mAst;
 
     public ExpressionResolver(@NonNull JCTree.JCCompilationUnit unit, @NonNull Editor editor) {

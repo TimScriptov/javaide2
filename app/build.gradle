@@ -72,6 +72,10 @@ android {
         exclude 'META-INF/plexus/components.xml'
         exclude 'META-INF/INDEX.LIST'
     }
+    compileOptions {
+        targetCompatibility = 1.8
+        sourceCompatibility = 1.8
+    }
 }
 
 

@@ -26,13 +26,13 @@ import com.duy.ide.javaide.editor.autocomplete.parser.IMethod;
 import com.duy.ide.javaide.editor.autocomplete.parser.JavaClassManager;
 import com.duy.ide.javaide.editor.autocomplete.parser.JavaDexClassLoader;
 import com.duy.ide.javaide.utils.DLog;
+import com.sun.tools.javac.tree.EndPosTable;
 import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.tree.JCTree.JCCompilationUnit;
 import com.sun.tools.javac.tree.JCTree.JCFieldAccess;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static com.sun.tools.javac.tree.JCTree.JCErroneous;
 import static com.sun.tools.javac.tree.JCTree.JCExpression;
@@ -43,7 +43,7 @@ import static com.sun.tools.javac.tree.JCTree.JCExpression;
 public class CompleteExpression extends JavaCompleteMatcherImpl {
     private static final String TAG = "CompleteExpression";
     private final JavaDexClassLoader mClassLoader;
-    private Map<JCTree, Integer> mEndPositions;
+    private EndPosTable mEndPositions;
 
     private JCCompilationUnit mAst;
     private IClass mCurrentType;

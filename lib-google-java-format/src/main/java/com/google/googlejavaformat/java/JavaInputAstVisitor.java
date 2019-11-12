@@ -1528,7 +1528,7 @@ public final class JavaInputAstVisitor extends TreePathScanner<Void, Void> {
         if (!(node.getExpression() instanceof UnaryTree)) {
             return false;
         }
-        int tag = ((JCTree) node.getExpression()).getTag();
+        JCTree.Tag tag = ((JCTree) node.getExpression()).getTag();
         if (OpUtil.isPostUnaryOp(tag)) {
             return false;
         }
