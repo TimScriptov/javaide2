@@ -159,15 +159,29 @@ public class AndroidProjectManager implements IAndroidProjectManager {
     private void createRes(AndroidAppProject project, boolean useAppCompat, String appName) throws IOException {
         File resDir = project.getResDir();
 
-        //drawable
+        //mipmap
         copyAssets("templates/app/ic_launcher_hdpi.png",
-                new File(resDir, "drawable-xhdpi/ic_launcher.png"));
-        copyAssets("templates/app/ic_launcher_ldpi.png",
-                new File(resDir, "drawable-ldpi/ic_launcher.png"));
+                new File(resDir, "mipmap-hdpi/ic_launcher.png"));
         copyAssets("templates/app/ic_launcher_mdpi.png",
-                new File(resDir, "drawable-mdpi/ic_launcher.png"));
+                new File(resDir, "mipmap-mdpi/ic_launcher.png"));
         copyAssets("templates/app/ic_launcher_xhdpi.png",
-                new File(resDir, "drawable-xhdpi/ic_launcher.png"));
+                new File(resDir, "mipmap-xhdpi/ic_launcher.png"));
+        copyAssets("templates/app/ic_launcher_xxhdpi.png",
+                new File(resDir, "mipmap-xxhdpi/ic_launcher.png"));
+        copyAssets("templates/app/ic_launcher_xxxhdpi.png",
+                new File(resDir, "mipmap-xxxhdpi/ic_launcher.png"));
+
+        //mipmap round
+        copyAssets("templates/app/ic_launcher_round_hdpi.png",
+                new File(resDir, "mipmap-hdpi/ic_launcher_round.png"));
+        copyAssets("templates/app/ic_launcher_round_mdpi.png",
+                new File(resDir, "mipmap-mdpi/ic_launcher_round.png"));
+        copyAssets("templates/app/ic_launcher_round_xhdpi.png",
+                new File(resDir, "mipmap-xhdpi/ic_launcher_round.png"));
+        copyAssets("templates/app/ic_launcher_round_xxhdpi.png",
+                new File(resDir, "mipmap-xxhdpi/ic_launcher_round.png"));
+        copyAssets("templates/app/ic_launcher_round_xxxhdpi.png",
+                new File(resDir, "mipmap-xxxhdpi/ic_launcher_round.png"));
 
         //styles
         File style = new File(resDir, "values/styles.xml");
@@ -299,5 +313,4 @@ public class AndroidProjectManager implements IAndroidProjectManager {
             project.addLibrary(androidLib);
         }
     }
-
 }

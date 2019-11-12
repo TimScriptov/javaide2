@@ -14,13 +14,11 @@ import java.util.ArrayList;
 
 public class JavaBuilder extends BuilderImpl<JavaProject> {
 
-
     private JavaProject mProject;
 
     public JavaBuilder(Context context, JavaProject project) {
         super(context);
         mProject = project;
-
     }
 
     @Override

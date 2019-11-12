@@ -11,7 +11,7 @@ import java.io.File;
 import java.util.List;
 
 public class GenerateBuildConfigTask extends Task<AndroidAppProject> {
-    List<Object> items;
+    private List<Object> items;
     private boolean debuggable = true;
     private int versionCode;
 
