@@ -27,3 +27,4 @@ dependencies {
     api 'org.ow2.asm:asm:6.0'
     api 'org.ow2.asm:asm-tree:6.0'
 }
+//https://android.googlesource.com/platform/tools/base/+/refs/tags/android-10.0.0_r14/lint/

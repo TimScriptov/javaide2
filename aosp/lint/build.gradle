@@ -23,3 +23,4 @@ dependencies {
     api project(':aosp:lint-checks')
     api 'org.eclipse.jdt.core.compiler:ecj:4.6.1'
 }
+//https://android.googlesource.com/platform/tools/base/+/refs/tags/android-10.0.0_r14/lint/
