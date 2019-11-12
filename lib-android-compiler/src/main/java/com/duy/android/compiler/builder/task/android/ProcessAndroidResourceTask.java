@@ -14,7 +14,6 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Locale;
 import java.util.regex.Pattern;
 
 /**
@@ -181,6 +180,22 @@ public class ProcessAndroidResourceTask extends Task<AndroidAppProject> {
     }
 
     private File getAaptFile() {
+        String aaptName;
+        if (Build.CPU_ABI.contains("armeabi-v7a") || Build.CPU_ABI2.contains("armeabi-v7a")) {
+            aaptName = "aapt-arm";
+        } else if (Build.CPU_ABI.contains("arm64-v8a") || Build.CPU_ABI2.contains("arm64-v8a")) {
+            aaptName = "aapt-arm64";
+        } else if (Build.CPU_ABI.contains("x86") || Build.CPU_ABI2.contains("x86")) {
+            aaptName = "aapt-x86";
+        } else if (Build.CPU_ABI.contains("x86_64") || Build.CPU_ABI2.contains("x86_64")) {
+            aaptName = "aapt-x86_64";
+        } else {
+            aaptName = "aapt-arm";
+        }
+        return new File(Environment.getBinDir(context), aaptName);
+    }
+
+    /*private File getAaptFile() {
         String arch = Build.CPU_ABI.substring(0, 3).toLowerCase(Locale.US);
         String aaptName;
         // Position Independent Executables (PIE) were first supported in Jelly Bean 4.1 (API level 16)
@@ -207,7 +222,7 @@ public class ProcessAndroidResourceTask extends Task<AndroidAppProject> {
                 break;
         }
         return new File(Environment.getBinDir(context), aaptName);
-    }
+    }*/
 
     private boolean execAapt(Argument args) throws InterruptedException, IOException {
         final int[] exitCode = new int[1];
