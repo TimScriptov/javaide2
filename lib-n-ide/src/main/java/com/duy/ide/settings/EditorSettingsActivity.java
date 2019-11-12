@@ -20,7 +20,7 @@ package com.duy.ide.settings;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
+import android.preference.SwitchPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.PreferenceActivity;
@@ -108,8 +108,8 @@ public class EditorSettingsActivity extends ThemeSupportActivity {
                             index >= 0
                                     ? listPreference.getEntries()[index]
                                     : null);
-                } else if (preference instanceof CheckBoxPreference) {
-                    ((CheckBoxPreference) preference).setChecked((boolean) value);
+                } else if (preference instanceof SwitchPreference) {
+                    ((SwitchPreference) preference).setChecked((boolean) value);
                 } else if ("pref_highlight_file_size_limit".equals(key)) {
                     preference.setSummary(stringValue + " KB");
                 } else {
@@ -148,8 +148,8 @@ public class EditorSettingsActivity extends ThemeSupportActivity {
                 if (preference instanceof ListPreference) {
                 } else if (preference instanceof EditTextPreference) {
                     ((EditTextPreference) preference).setText(String.valueOf(value));
-                } else if (preference instanceof CheckBoxPreference) {
-                    ((CheckBoxPreference) preference).setChecked(Boolean.valueOf(String.valueOf(value)));
+                } else if (preference instanceof SwitchPreference) {
+                    ((SwitchPreference) preference).setChecked(Boolean.valueOf(String.valueOf(value)));
                 }
 
                 if (!Preferences.KEY_SYMBOL.equals(key))
