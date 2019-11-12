@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
+//apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -94,16 +94,16 @@ dependencies {
     api project(':lib-n-ide')
 
     //firebase sdk
-    api "com.google.firebase:firebase-core:16.0.0"
-    api 'com.crashlytics.sdk.android:crashlytics:2.9.3'
+    //api "com.google.firebase:firebase-core:16.0.0"
+    //api 'com.crashlytics.sdk.android:crashlytics:2.9.3'
 
     api 'io.github.kobakei:ratethisapp:1.2.0'
     api 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
     api 'com.miguelcatalan:materialsearchview:1.4.0'
 
     /*Lib n-ide*/
-    api 'com.google.code.gson:gson:2.8.1'
-    api 'com.anjlab.android.iab.v3:library:1.0.44'
+    api 'com.google.code.gson:gson:2.8.5'
+    api 'com.anjlab.android.iab.v3:library:1.1.0'
     api 'org.apmem.tools:layouts:1.10@aar'
     api 'com.makeramen:roundedimageview:2.2.1'
     api 'com.yqritc:recyclerview-flexibledivider:1.2.9'
@@ -119,15 +119,15 @@ dependencies {
     api 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
 
     //android compat
-    api 'androidx.multidex:multidex:2.0.0'
+    api 'androidx.multidex:multidex:2.0.1'
     api 'androidx.recyclerview:recyclerview:1.0.0'
-    api 'androidx.appcompat:appcompat:1.0.0'
+    api 'androidx.appcompat:appcompat:1.1.0'
     api 'androidx.legacy:legacy-support-v4:1.0.0'
-    api 'androidx.vectordrawable:vectordrawable:1.0.0'
+    api 'androidx.vectordrawable:vectordrawable:1.1.0'
     api 'androidx.cardview:cardview:1.0.0'
-    api 'androidx.annotation:annotation:1.0.0'
+    api 'androidx.annotation:annotation:1.1.0'
     api 'com.google.android.material:material:1.0.0'
-    api 'androidx.preference:preference:1.0.0'
+    api 'androidx.preference:preference:1.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

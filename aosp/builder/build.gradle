@@ -34,7 +34,7 @@ dependencies {
     api project(':aosp:common')
     api project(':aosp:ddmlib')
 
-    api 'androidx.annotation:annotation:1.0.0'
+    api 'androidx.annotation:annotation:1.1.0'
     api 'androidx.legacy:legacy-support-v4:1.0.0'
     api 'com.google.guava:guava:25.1-android'
 

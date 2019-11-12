@@ -19,8 +19,7 @@ package com.duy.ide.javaide.utils;
 
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
-
+//import com.crashlytics.android.Crashlytics;
 
 /**
  * Created by Duy on 27-Mar-17.
@@ -28,7 +27,7 @@ import com.crashlytics.android.Crashlytics;
 public class DLog {
     public static String TAG = DLog.class.getSimpleName();
     public static boolean DEBUG = true;
-    public static boolean ANDROID = true;
+    private static boolean ANDROID = true;
 
     public static void d(Object msg) {
         if (DEBUG) {
@@ -122,7 +121,7 @@ public class DLog {
     }
 
     public static void reportException(Throwable e) {
-        Crashlytics.logException(e);
+        //Crashlytics.logException(e);
     }
 
 }
