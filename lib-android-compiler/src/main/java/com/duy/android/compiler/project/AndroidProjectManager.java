@@ -60,8 +60,8 @@ public class AndroidProjectManager implements IAndroidProjectManager {
         createGradleFile(project);
         createRes(project, useCompatLibrary, appName);
         createManifest(project, activityClass, packageName, assets);
-        createMainActivity(project, activityClass, packageName, activityName, appName, useCompatLibrary, assets);
-        createMainLayoutXml(project, mainLayoutName);
+        createMainActivity(project, activityClass, packageName, activityName, mainLayoutName, useCompatLibrary, assets);
+        createMainLayoutXml(project, mainLayoutName, activityName, assets);
         copyLibrary(project, useCompatLibrary);
 
         return project;
@@ -188,7 +188,7 @@ public class AndroidProjectManager implements IAndroidProjectManager {
         String content = IOUtils.toString(
                 context.getAssets().open("templates/app/styles.xml"), "UTF-8");
         content = content.replace("APP_STYLE", useAppCompat
-                ? "Theme.AppCompat.Light" : "@android:style/Theme.Light");
+                ? "Theme.AppCompat.Light.DarkActionBar" : "@android:style/Theme.Light");
         saveFile(style, content);
 
         File string = new File(resDir, "values/strings.xml");
@@ -209,9 +209,8 @@ public class AndroidProjectManager implements IAndroidProjectManager {
         saveFile(manifest, content);
     }
 
-
     private void createMainActivity(AndroidAppProject project, String activityClass,
-                                    String packageName, String activityName, String appName,
+                                    String packageName, String activityName, String layoutName,
                                     boolean useAppCompat, AssetManager assets) throws IOException {
         File activityFile = new File(project.getJavaSrcDir(),
                 activityClass.replace(".", File.separator) + ".java");
@@ -220,16 +219,17 @@ public class AndroidProjectManager implements IAndroidProjectManager {
         String content = IOUtils.toString(assets.open(name));
         content = content.replace("PACKAGE", packageName);
         content = content.replace("ACTIVITY_NAME", activityName);
+        content = content.replace("ACTIVITY_MAIN", layoutName);
         saveFile(activityFile, content);
     }
 
-    private void createMainLayoutXml(AndroidAppProject project, String layoutName) throws IOException {
-        if (!layoutName.contains(".")) {
-            layoutName += ".xml";
-        }
-
+    private void createMainLayoutXml(AndroidAppProject project, String layoutName, String activityName,
+                                AssetManager assets) throws IOException {
         File layoutMain = new File(project.getResDir(), "layout/" + layoutName);
-        copyAssets("templates/app/activity_main.xml", layoutMain);
+        String content = IOUtils.toString(assets.open("templates/app/activity_main.xml"));
+
+        content = content.replace("ACTIVITY_NAME", activityName);
+        saveFile(layoutMain, content);
     }
 
     private void copyAssets(String assetsPath, File outFile) throws IOException {
@@ -252,10 +252,35 @@ public class AndroidProjectManager implements IAndroidProjectManager {
     private static final  String path1 = "libs/android/arch/core/";
     private static final  String path2 = "libs/android/arch/lifecycle/";
 
+    private static final  String pathx = "libs/androidx/";
+
     private void copyLibrary(AndroidAppProject project, boolean useCompatLibrary)
             throws IOException, StreamException, SAXException, ParserConfigurationException {
         if (useCompatLibrary) {
-            // AppCompat
+            // androidx
+            addLib(project, pathx + "activity/1.0.0/activity-1.0.0.aar", pathx + "activity/1.0.0/activity-1.0.0");
+            addLib(project, pathx + "appcompat/1.1.0/appcompat-1.1.0.aar", pathx + "appcompat/1.1.0/appcompat-1.1.0");
+            addLib(project, pathx + "appcompat-resources/1.1.0/appcompat-resources-1.1.0.aar", pathx + "appcompat-resources/1.1.0/appcompat-resources-1.1.0");
+            addLib(project, pathx + "constraintlayout/1.1.3/constraintlayout-1.1.3.aar", pathx + "constraintlayout/1.1.3/constraintlayout-1.1.3");
+            addLib(project, pathx + "core/1.1.0/core-1.1.0.aar", pathx + "core/1.1.0/core-1.1.0");
+            addLib(project, pathx + "core-runtime/2.0.0/core-runtime-2.0.0.aar", pathx + "core-runtime/2.0.0/core-runtime-2.0.0");
+            addLib(project, pathx + "cursoradapter/1.0.0/cursoradapter-1.0.0.aar", pathx + "cursoradapter/1.0.0/cursoradapter-1.0.0");
+            addLib(project, pathx + "customview/1.0.0/customview-1.0.0.aar", pathx + "customview/1.0.0/customview-1.0.0");
+            addLib(project, pathx + "drawerlayout/1.0.0/drawerlayout-1.0.0.aar", pathx + "drawerlayout/1.0.0/drawerlayout-1.0.0");
+            addLib(project, pathx + "fragment/1.1.0/fragment-1.1.0.aar", pathx + "fragment/1.1.0/fragment-1.1.0");
+            addLib(project, pathx + "interpolator/1.0.0/interpolator-1.0.0.aar", pathx + "interpolator/1.0.0/interpolator-1.0.0");
+            addLib(project, pathx + "lifecycle-livedata/2.0.0/lifecycle-livedata-2.0.0.aar", pathx + "lifecycle-livedata/2.0.0/lifecycle-livedata-2.0.0");
+            addLib(project, pathx + "lifecycle-livedata-core/2.0.0/lifecycle-livedata-core-2.0.0.aar", pathx + "lifecycle-livedata-core/2.0.0/lifecycle-livedata-core-2.0.0");
+            addLib(project, pathx + "lifecycle-runtime/2.1.0/lifecycle-runtime-2.1.0.aar", pathx + "lifecycle-runtime/2.1.0/lifecycle-runtime-2.1.0");
+            addLib(project, pathx + "lifecycle-viewmodel/2.1.0/lifecycle-viewmodel-2.1.0.aar", pathx + "lifecycle-viewmodel/2.1.0/lifecycle-viewmodel-2.1.0");
+            addLib(project, pathx + "loader/1.0.0/loader-1.0.0.aar", pathx + "loader/1.0.0/loader-1.0.0");
+            addLib(project, pathx + "savedstate/1.0.0/savedstate-1.0.0.aar", pathx + "savedstate/1.0.0/savedstate-1.0.0");
+            addLib(project, pathx + "vectordrawable/1.1.0/vectordrawable-1.1.0.aar", pathx + "vectordrawable/1.1.0/vectordrawable-1.1.0");
+            addLib(project, pathx + "vectordrawable-animated/1.1.0/vectordrawable-animated-1.1.0.aar", pathx + "vectordrawable-animated/1.1.0/vectordrawable-animated-1.1.0");
+            addLib(project, pathx + "versionedparcelable/1.1.0/versionedparcelable-1.1.0.aar", pathx + "versionedparcelable/1.1.0/versionedparcelable-1.1.0");
+            addLib(project, pathx + "viewpager/1.0.0/viewpager-1.0.0.aar", pathx + "viewpager/1.0.0/viewpager-1.0.0");
+
+            /*
             addLib(project, path + "animated-vector-drawable/27.1.1/animated-vector-drawable-27.1.1.aar", "com/android/support/animated-vector-drawable-27.1.1");
             addLib(project, path + "appcompat-v7/27.1.1/appcompat-v7-27.1.1.aar", "com/android/support/appcompat-v7-27.1.1");
             addLib(project, path + "cardview-v7/27.1.1/cardview-v7-27.1.1.aar", "com/android/support/cardview-v7-27.1.1");
@@ -270,18 +295,15 @@ public class AndroidProjectManager implements IAndroidProjectManager {
             addLib(project, path + "support-v4/27.1.1/support-v4-27.1.1.aar", "com/android/support/support-v4-27.1.1");
             addLib(project, path + "support-vector-drawable/27.1.1/support-vector-drawable-27.1.1.aar", "com/android/support/support-vector-drawable-27.1.1");
             addLib(project, path + "transition/27.1.1/transition-27.1.1.aar", "com/android/support/transition-27.1.1");
-
-            // Arch core
             //addLib(project, path1 + "common/1.1.1/common-1.1.1.jar", "android/arch/core/common-1.1.1.jar");
             addLib(project, path1 + "runtime/1.1.1/runtime-1.1.1.aar", "android/arch/core/runtime/1.1.1/runtime-1.1.1");
-
-            // Arch lifecycle
             //addLib(project, path2 + "common/1.1.1/common-1.1.1.jar", "android/arch/lifecycle/common-1.1.1.jar");
             addLib(project, path2 + "extensions/1.1.1/extensions-1.1.1.aar", "android/arch/lifecycle/extensions/1.1.1/extensions-1.1.1");
             addLib(project, path2 + "livedata/1.1.1/livedata-1.1.1.aar", "android/arch/lifecycle/livedata/1.1.1/livedata-1.1.1");
             addLib(project, path2 + "livedata-core/1.1.1/livedata-core-1.1.1.aar", "android/arch/lifecycle/livedata-core/1.1.1/livedata-core-1.1.1");
             addLib(project, path2 + "runtime/1.1.1/runtime-1.1.1.aar", "android/arch/lifecycle/runtime/1.1.1/runtime-1.1.1");
             addLib(project, path2 + "viewmodel/1.1.1/viewmodel-1.1.1.aar", "android/arch/lifecycle/viewmodel/1.1.1/viewmodel-1.1.1");
+            */
         }
     }
 
