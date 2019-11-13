@@ -68,6 +68,10 @@ public class CompileJavaTask extends Task<JavaProject> {
         mCompileOptions.setEncoding(encoding);
     }
 
+    public static void javac(String[] zArgs) {
+        com.sun.tools.javac.Main main = new com.sun.tools.javac.Main();
+        main.compile(zArgs);
+    }
 
     private boolean runEcj() {
         mBuilder.stdout(TAG + ": Compile java with javac");
