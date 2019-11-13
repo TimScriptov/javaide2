@@ -46,6 +46,7 @@ dependencies {
 
     api project(':bouncycastle')
     api project(':dx')
+    api project(':d8')
     api project(':jdk-1_7')
     api project(':aosp:builder')
     api project(':common')

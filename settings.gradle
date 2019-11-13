@@ -1,6 +1,6 @@
 include ':common'
 include ':app', ':treeview', ':androidlogcat'
-include ':bouncycastle', ':jdk-1_7', ':dx'
+include ':bouncycastle', ':jdk-1_7', ':dx', ':d8'
 
 include ':aosp:annotations'
 include ':aosp:dvlib'

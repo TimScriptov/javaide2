@@ -67,10 +67,7 @@ public class DexTask extends Task<JavaProject> {
                     jarLib.getAbsolutePath() //input
             };
             mBuilder.stdout("Dexing lib " + jarLib.getPath() + " => " + dexLib.getAbsolutePath());
-            int resultCode = com.android.dx.command.dexer.Main.main(args);
-            if (resultCode != 0) {
-                return false;
-            }
+            com.android.dx.command.dexer.Main.main(args);
             mBuilder.stdout("Dexed lib " + dexLib.getAbsolutePath());
         }
         mBuilder.stdout("Dex libs completed");
@@ -89,9 +86,9 @@ public class DexTask extends Task<JavaProject> {
                 "--output=" + project.getDexFile().getAbsolutePath(), //output dex file
                 buildClasseDir.getAbsolutePath() //input files
         };
-        int resultCode = com.android.dx.command.dexer.Main.main(args);
+        com.android.dx.command.dexer.Main.main(args);
         mBuilder.stdout("Merged build classes " + project.getDexFile().getName());
-        return resultCode == 0;
+        return true;
     }
 
     private boolean dexMerge(@NonNull JavaProject projectFile) throws IOException {

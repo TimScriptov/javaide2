@@ -19,6 +19,7 @@ package com.android.tools.lint.detector.api;
 import static com.android.SdkConstants.CLASS_CONTEXT;
 import static com.android.tools.lint.client.api.JavaParser.ResolvedNode;
 import static com.android.tools.lint.client.api.JavaParser.TypeDescriptor;
+import static java.util.Collections.emptyIterator;
 
 import com.android.annotations.NonNull;
 import com.android.annotations.Nullable;
@@ -253,7 +254,7 @@ public class JavaContext extends Context {
         } else if (call instanceof EnumConstant) {
             return ((EnumConstant) call).astArguments().iterator();
         } else {
-            return Iterators.emptyIterator();
+            return emptyIterator();
         }
     }
 
