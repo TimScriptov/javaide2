@@ -41,7 +41,7 @@ public class DialogDeleteFile extends BaseDialog {
         AlertDialog.Builder builder = getBuilder();
         builder.setMessage(getString(R.string.remove_file_msg) + " " + toBeDeleted.getName());
         builder.setTitle(R.string.delete_file);
-        builder.setIcon(R.drawable.ic_delete_forever_white_24dp);
+        builder.setIcon(R.drawable.ic_delete_forever_white);
         builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

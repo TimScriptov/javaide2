@@ -13,11 +13,11 @@
 
     <item
         android:id="@+id/action_see_logcat"
-        android:icon="@drawable/ic_line_weight_white_24dp"
+        android:icon="@drawable/ic_line_weight_white"
         android:title="@string/logcat" />
     <item
         android:id="@+id/action_sample"
-        android:icon="@drawable/ic_code_white_24dp"
+        android:icon="@drawable/ic_code_white"
         android:title="@string/sample_code_java" />
     <item android:title="Build">
         <menu>

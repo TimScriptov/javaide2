@@ -94,7 +94,7 @@ public class DynamicLayoutInflator {
         return inflateName(context, name, null);
     }
 
-    public static View inflateName(Context context, String name, ViewGroup parent) {
+    private static View inflateName(Context context, String name, ViewGroup parent) {
         if (name.startsWith("<")) {
             // Assume it's XML
             return DynamicLayoutInflator.inflate(context, name, parent);
@@ -103,12 +103,12 @@ public class DynamicLayoutInflator {
             try {
                 InputStream fileStream = new FileInputStream(savedFile);
                 return DynamicLayoutInflator.inflate(context, fileStream, parent);
-            } catch (FileNotFoundException e) {
+            } catch (FileNotFoundException ignored) {
             }
             try {
                 InputStream assetStream = context.getAssets().open(name + ".xml");
                 return DynamicLayoutInflator.inflate(context, assetStream, parent);
-            } catch (IOException e) {
+            } catch (IOException ignored) {
             }
             int id = context.getResources().getIdentifier(name, "layout", context.getPackageName());
             if (id > 0) {
@@ -155,11 +155,7 @@ public class DynamicLayoutInflator {
             } finally {
                 inputStream.close();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
+        } catch (IOException | ParserConfigurationException | SAXException e) {
             e.printStackTrace();
         }
         return null;
@@ -197,15 +193,7 @@ public class DynamicLayoutInflator {
             Class<?> clazz = Class.forName(name);
             Constructor<?> constructor = clazz.getConstructor(Context.class);
             return (View) constructor.newInstance(context);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (ClassNotFoundException | NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return null;
@@ -553,9 +541,7 @@ public class DynamicLayoutInflator {
                     }
                     Method method = klass.getMethod(finalMethod, argClasses);
                     method.invoke(delegate, args);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
+                } catch (IllegalAccessException | InvocationTargetException e) {
                     e.printStackTrace();
                 } catch (NoSuchMethodException e) {
                     e.printStackTrace();
@@ -576,6 +562,7 @@ public class DynamicLayoutInflator {
         return value;
     }
 
+    @SuppressLint("RtlHardcoded")
     private static int parseGravity(String value) {
         int gravity = Gravity.NO_GRAVITY;
         String[] parts = value.toLowerCase().split("[|]");
@@ -609,7 +596,7 @@ public class DynamicLayoutInflator {
         return gravity;
     }
 
-    public static int idNumFromIdString(View view, String id) {
+    private static int idNumFromIdString(View view, String id) {
         if (!(view instanceof ViewGroup)) return 0;
         Object tag = view.getTag();
         if (!(tag instanceof DynamicLayoutInfo)) return 0; // not inflated by this class
@@ -632,7 +619,7 @@ public class DynamicLayoutInflator {
         return view.findViewById(idNum);
     }
 
-    public static int parseColor(View view, String text) {
+    private static int parseColor(View view, String text) {
         if (text.startsWith("@color/")) {
             Resources resources = view.getResources();
             return resources.getColor(resources.getIdentifier(text.substring("@color/".length()), "color", view.getContext().getPackageName()));
@@ -643,7 +630,7 @@ public class DynamicLayoutInflator {
         return Color.parseColor(text);
     }
 
-    public static int adjustBrightness(int color, float amount) {
+    private static int adjustBrightness(int color, float amount) {
         int red = color & 0xFF0000 >> 16;
         int green = color & 0x00FF00 >> 8;
         int blue = color & 0x0000FF;
@@ -653,13 +640,13 @@ public class DynamicLayoutInflator {
         return result;
     }
 
-    public static Drawable getDrawableByName(View view, String name) {
+    private static Drawable getDrawableByName(View view, String name) {
         Resources resources = view.getResources();
         return resources.getDrawable(resources.getIdentifier(name, "drawable",
                 view.getContext().getPackageName()));
     }
 
-    public static void createViewRunnables() {
+    private static void createViewRunnables() {
         viewRunnables = new HashMap<>(30);
         viewRunnables.put("scaleType", new ViewParamRunnable() {
             @Override
@@ -740,6 +727,7 @@ public class DynamicLayoutInflator {
             }
         });
         viewRunnables.put("textAlignment", new ViewParamRunnable() {
+            @SuppressLint("RtlHardcoded")
             @Override
             public void apply(View view, String value, ViewGroup parent, Map<String, String> attrs) {
                 if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
@@ -758,7 +746,7 @@ public class DynamicLayoutInflator {
                     }
                     view.setTextAlignment(alignment);
                 } else {
-                    int gravity = Gravity.LEFT;
+                    @SuppressLint("RtlHardcoded") int gravity = Gravity.LEFT;
                     switch (value) {
                         case "center":
                             gravity = Gravity.CENTER;
@@ -917,5 +905,4 @@ public class DynamicLayoutInflator {
             nameToIdNumber = new HashMap<>();
         }
     }
-
 }

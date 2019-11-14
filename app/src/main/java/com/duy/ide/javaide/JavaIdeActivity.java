@@ -167,10 +167,9 @@ public class JavaIdeActivity extends ProjectManagerActivity implements DialogRun
                 .setIcon(MenuManager.makeToolbarNormalIcon(this,
                         R.drawable.ic_play_arrow_white_24dp))
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-
         container.add(0, R.id.image_run_file, 0, R.string.run)
                 .setIcon(MenuManager.makeToolbarNormalIcon(this,
-                        R.drawable.ic_fullscreen_white_24dp))
+                        R.drawable.ic_layout_preview))
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         super.onCreateOptionsMenu(container);
         MenuItem fileMenu = container.findItem(R.id.menu_file);

@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.tools.DiagnosticListener;
 
@@ -41,7 +42,8 @@ public class CompileJavaTask extends Task<JavaProject> {
 
     public boolean doFullTaskAction() {
         loadCompilerOptions();
-        return runEcj();
+        //return runEcj();
+        return runJavac();
     }
 
     private void loadCompilerOptions() {
@@ -75,8 +77,51 @@ public class CompileJavaTask extends Task<JavaProject> {
         mCompileOptions.setEncoding(encoding);
     }
 
-    private boolean runEcj() {
+    private boolean runJavac1() {
         mBuilder.stdout(TAG + ": Compile java with javac");
+
+        ArrayList<File> javaLibraries = mProject.getJavaLibraries();
+        StringBuilder classpath = new StringBuilder(".");
+        for (File javaLibrary : javaLibraries) {
+            classpath.append(File.pathSeparator).append(javaLibrary.getParent());
+        }
+
+        String[] args = new String[]{
+                "-verbose",
+                "-bootclasspath", mBuilder.getBootClassPath(),
+                "-cp", mProject.getClasspath(),
+                "-sourcepath", mProject.getSourcePath(),
+                //"-" + mCompileOptions.getSourceCompatibility().toString(), //host
+                //"-target", mCompileOptions.getTargetCompatibility().toString(), //target
+                //"-proc:none", // Disable annotation processors...
+                "-d", mProject.getDirBuildClasses().getAbsolutePath()
+        };
+        System.out.println(TAG + ": Compiler arguments " + Arrays.toString(args));
+        int resultCode = com.sun.tools.javac.Main.compile(args);
+        return resultCode == 0;
+    }
+
+    private boolean runJavac() {
+        mBuilder.stdout(TAG + ": Compile java with javac");
+
+        Argument argument = new Argument();
+        argument.add(mBuilder.isVerbose() ? "-verbose" : "-warn:");
+        argument.add("-bootclasspath", mBuilder.getBootClassPath());
+        argument.add("-cp", mProject.getClasspath());
+        argument.add("-sourcepath", mProject.getSourcePath());
+        argument.add("-d", mProject.getDirBuildClasses().getAbsolutePath()); // The location of the output folder
+
+        String[] sourceFiles = getAllSourceFiles(mProject);
+        argument.add(sourceFiles);
+
+        System.out.println(TAG + ": Compiler arguments " + argument);
+
+        int result = com.sun.tools.javac.Main.compile(argument.toArray());
+        return result == 0;
+    }
+
+    private boolean runEcj() {
+        mBuilder.stdout(TAG + ": Compile java with ecj");
         PrintWriter outWriter = new PrintWriter(mBuilder.getStdout());
         PrintWriter errWriter = new PrintWriter(mBuilder.getStderr());
         org.eclipse.jdt.internal.compiler.batch.Main main =
