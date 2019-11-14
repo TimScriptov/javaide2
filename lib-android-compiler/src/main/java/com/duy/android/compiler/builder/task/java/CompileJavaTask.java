@@ -29,11 +29,6 @@ public class CompileJavaTask extends Task<JavaProject> {
         super(builder);
     }
 
-    public static void javac(String[] zArgs) {
-        com.sun.tools.javac.Main main = new com.sun.tools.javac.Main();
-        main.compile(zArgs);
-    }
-
     @Override
     public String getTaskName() {
         return "Compile java source";
@@ -41,7 +36,7 @@ public class CompileJavaTask extends Task<JavaProject> {
 
     public boolean doFullTaskAction() {
         loadCompilerOptions();
-        return runEcj();
+        return runJavac();
     }
 
     private void loadCompilerOptions() {
@@ -74,9 +69,34 @@ public class CompileJavaTask extends Task<JavaProject> {
         }
         mCompileOptions.setEncoding(encoding);
     }
+	
+	private boolean runJavac() {
+		mBuilder.stdout(TAG + ": Compile java with javac");
+        com.sun.tools.javac.Main main = new com.sun.tools.javac.Main();
+		
+		Argument argument = new Argument();
+		argument.add("-verbose");
+		argument.add("-bootclasspath", mBuilder.getBootClassPath());
+		argument.add("-cp", mProject.getClasspath());
+		argument.add("-sourcepath", mProject.getSourcePath());
+		argument.add("-d", mProject.getDirBuildClasses().getAbsolutePath());
+		
+		String[] sourceFiles = getAllSourceFiles(mProject);
+        argument.add(sourceFiles);
+		
+		System.out.println(TAG + ": Compiler arguments " + argument);
+		
+        int result = main.compile(argument.toArray());
+		
+		if (result == 0){
+			return true;
+		} else{
+			return false;
+		}
+    }
 
     private boolean runEcj() {
-        mBuilder.stdout(TAG + ": Compile java with javac");
+        mBuilder.stdout(TAG + ": Compile java with ecj");
         PrintWriter outWriter = new PrintWriter(mBuilder.getStdout());
         PrintWriter errWriter = new PrintWriter(mBuilder.getStderr());
         org.eclipse.jdt.internal.compiler.batch.Main main =
