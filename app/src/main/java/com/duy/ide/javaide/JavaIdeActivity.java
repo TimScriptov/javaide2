@@ -167,6 +167,11 @@ public class JavaIdeActivity extends ProjectManagerActivity implements DialogRun
                 .setIcon(MenuManager.makeToolbarNormalIcon(this,
                         R.drawable.ic_play_arrow_white_24dp))
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
+        container.add(0, R.id.image_run_file, 0, R.string.run)
+                .setIcon(MenuManager.makeToolbarNormalIcon(this,
+                        R.drawable.ic_fullscreen_white_24dp))
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
         super.onCreateOptionsMenu(container);
         MenuItem fileMenu = container.findItem(R.id.menu_file);
         new JavaMenuManager(this).createFileMenu(fileMenu.getSubMenu());
@@ -188,6 +193,9 @@ public class JavaIdeActivity extends ProjectManagerActivity implements DialogRun
         switch (id) {
             case R.id.action_run:
                 saveAll(RC_BUILD_PROJECT);
+                break;
+            case R.id.image_run_file:
+                saveAll(RC_REVIEW_LAYOUT);
                 break;
             case R.id.action_new_java_project:
                 createJavaProject();
@@ -219,17 +227,6 @@ public class JavaIdeActivity extends ProjectManagerActivity implements DialogRun
             case R.id.action_compiler_setting:
                 startActivity(new Intent(this, CompilerSettingActivity.class));
                 return true;
-
-            case R.id.action_install_cpp_nide:
-                StoreUtil.gotoPlayStore(this, "com.duy.c.cpp.compiler");
-                break;
-
-            case R.id.action_report_bug: {
-                Intent intent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://github.com/tranleduy2000/javaide/issues"));
-                startActivity(intent);
-                break;
-            }
             case R.id.action_premium:
                 PremiumDialog premiumDialog = new PremiumDialog(this, mInAppPurchaseHelper);
                 premiumDialog.show();
@@ -483,5 +480,4 @@ public class JavaIdeActivity extends ProjectManagerActivity implements DialogRun
     public DiagnosticPresenter getDiagnosticPresenter() {
         return mDiagnosticPresenter;
     }
-
 }

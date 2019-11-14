@@ -96,6 +96,7 @@ dependencies {
     api project(':common')
 
     api project(':lib-n-ide')
+    api project(':layout-inflater')
 
     //firebase sdk
     //api "com.google.firebase:firebase-core:16.0.0"

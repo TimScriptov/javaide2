@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_install_cpp_nide"
-        android:icon="@drawable/ic_code_white_24dp"
-        android:title="C/C++ N-IDE" />
-    <item
         android:id="@+id/action_premium"
         android:icon="@drawable/baseline_lock_open_24"
         android:title="@string/title_premium_version"
@@ -36,10 +32,6 @@
                 android:title="Run jar archive" />
         </menu>
     </item>
-    <item
-        android:id="@+id/action_report_bug"
-        android:icon="@drawable/ic_bug_report_white_24dp"
-        android:title="@string/report_bug" />
     <item
         android:id="@+id/action_compiler_setting"
         android:enabled="true"

@@ -18,6 +18,8 @@ import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
+import javax.tools.DiagnosticListener;
+
 public class CompileJavaTask extends Task<JavaProject> {
 
     private static final String TAG = "CompileJavaTask";
@@ -25,6 +27,11 @@ public class CompileJavaTask extends Task<JavaProject> {
 
     public CompileJavaTask(IBuilder<? extends JavaProject> builder) {
         super(builder);
+    }
+
+    public static void javac(String[] zArgs) {
+        com.sun.tools.javac.Main main = new com.sun.tools.javac.Main();
+        main.compile(zArgs);
     }
 
     @Override
@@ -66,11 +73,6 @@ public class CompileJavaTask extends Task<JavaProject> {
             }
         }
         mCompileOptions.setEncoding(encoding);
-    }
-
-    public static void javac(String[] zArgs) {
-        com.sun.tools.javac.Main main = new com.sun.tools.javac.Main();
-        main.compile(zArgs);
     }
 
     private boolean runEcj() {

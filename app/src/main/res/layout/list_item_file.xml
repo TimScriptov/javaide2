@@ -38,6 +38,7 @@
             android:textColor="@color/dark.color_folder"
             android:textSize="12sp"
             tools:text="MainActivity.java" />
+
     </LinearLayout>
 
 
@@ -68,5 +69,7 @@
             android:clickable="true"
             android:focusable="true"
             app:srcCompat="@drawable/ic_close_white_24dp" />
+
     </LinearLayout>
+
 </RelativeLayout>

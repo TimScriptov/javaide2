@@ -84,6 +84,7 @@
                 android:layout_weight="1"
                 android:text="@string/package_private" />
         </RadioGroup>
+
     </LinearLayout>
 
     <LinearLayout
@@ -127,6 +128,7 @@
                 android:layout_weight="1"
                 android:text="@string/final_" />
         </RadioGroup>
+
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatCheckBox
@@ -154,5 +156,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@android:string/ok" />
+
     </LinearLayout>
+
 </LinearLayout>
