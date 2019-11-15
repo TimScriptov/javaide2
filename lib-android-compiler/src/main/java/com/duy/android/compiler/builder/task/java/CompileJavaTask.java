@@ -98,7 +98,7 @@ public class CompileJavaTask extends Task<JavaProject> {
         Argument argument = new Argument();
         argument.add(mBuilder.isVerbose() ? "-verbose" : "-warn:");
         argument.add("-bootclasspath", mBuilder.getBootClassPath());
-        argument.add("-cp", mProject.getClasspath());
+        argument.add("-classpath", mProject.getClasspath());
         argument.add("-sourcepath", mProject.getSourcePath());
         argument.add("-d", mProject.getDirBuildClasses().getAbsolutePath()); // The location of the output folder
 
@@ -116,8 +116,7 @@ public class CompileJavaTask extends Task<JavaProject> {
         PrintWriter outWriter = new PrintWriter(mBuilder.getStdout());
         PrintWriter errWriter = new PrintWriter(mBuilder.getStderr());
         org.eclipse.jdt.internal.compiler.batch.Main main =
-                new org.eclipse.jdt.internal.compiler.batch.Main(outWriter, errWriter,
-                        false, null, null);
+                new org.eclipse.jdt.internal.compiler.batch.Main(outWriter, errWriter, false, null, null);
 
         Argument argument = new Argument();
         argument.add(mBuilder.isVerbose() ? "-verbose" : "-warn:");
