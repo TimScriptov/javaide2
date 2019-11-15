@@ -1,7 +1,9 @@
 package com.duy.android.compiler.builder.task.java;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.view.contentcapture.ContentCaptureCondition;
 
 import com.duy.android.compiler.builder.IBuilder;
 import com.duy.android.compiler.builder.internal.CompileOptions;
@@ -14,6 +16,7 @@ import com.duy.javacompiler.R;
 import org.eclipse.jdt.internal.compiler.batch.Main;
 
 import java.io.File;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -43,7 +46,7 @@ public class CompileJavaTask extends Task<JavaProject> {
     public boolean doFullTaskAction() {
         loadCompilerOptions();
         //return runEcj();
-        return runJavac();
+        return j6();
     }
 
     private void loadCompilerOptions() {
@@ -76,29 +79,17 @@ public class CompileJavaTask extends Task<JavaProject> {
         }
         mCompileOptions.setEncoding(encoding);
     }
-
-    private boolean runJavac1() {
-        mBuilder.stdout(TAG + ": Compile java with javac");
-
-        ArrayList<File> javaLibraries = mProject.getJavaLibraries();
-        StringBuilder classpath = new StringBuilder(".");
-        for (File javaLibrary : javaLibraries) {
-            classpath.append(File.pathSeparator).append(javaLibrary.getParent());
+    
+    public boolean j6() {
+        if (a()) {
+            return runJavac();//вкл
         }
+        return runEcj();//выкл
+    }
 
-        String[] args = new String[]{
-                "-verbose",
-                "-bootclasspath", mBuilder.getBootClassPath(),
-                "-cp", mProject.getClasspath(),
-                "-sourcepath", mProject.getSourcePath(),
-                //"-" + mCompileOptions.getSourceCompatibility().toString(), //host
-                //"-target", mCompileOptions.getTargetCompatibility().toString(), //target
-                //"-proc:none", // Disable annotation processors...
-                "-d", mProject.getDirBuildClasses().getAbsolutePath()
-        };
-        System.out.println(TAG + ": Compiler arguments " + Arrays.toString(args));
-        int resultCode = com.sun.tools.javac.Main.compile(args);
-        return resultCode == 0;
+    public boolean a() {
+        PreferenceManager.getDefaultSharedPreferences(context);
+        return context.getSharedPreferences("com.duy.compiler.javanide_preferences", 0).getBoolean("key_pref_java_compiler_select", false);
     }
 
     private boolean runJavac() {

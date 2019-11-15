@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="Java options">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="key_pref_java_compiler_select"
+            android:title="Использовать javac"
+            android:summary="По умолчанию используется ecj">
+
+        </SwitchPreference>
+
         <ListPreference
             android:defaultValue="1.7"
             android:entries="@array/entries_java_versions"
