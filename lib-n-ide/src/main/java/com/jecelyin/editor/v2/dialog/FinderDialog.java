@@ -239,20 +239,20 @@ public class FinderDialog extends AbstractDialog  {
                     .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
             menu.add(0, ID_FIND_PREV, 0, R.string.previous_occurrence)
-                    .setIcon(R.drawable.ic_keyboard_arrow_up_white_24dp)
+                    .setIcon(R.drawable.ic_keyboard_arrow_up_white)
                     .setAlphabeticShortcut('p')
                     .setShowAsAction(
                             MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
             menu.add(0, ID_FIND_NEXT, 0, R.string.next_occurrence)
-                    .setIcon(R.drawable.ic_keyboard_arrow_down_white_24dp)
+                    .setIcon(R.drawable.ic_keyboard_arrow_down_white)
                     .setAlphabeticShortcut('n')
                     .setShowAsAction(
                             MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
             if (replaceText != null) {
                 menu.add(0, ID_REPLACE, 0, R.string.replace)
-                        .setIcon(R.drawable.ic_find_replace_white_24dp)
+                        .setIcon(R.drawable.ic_find_replace_white)
                         .setShowAsAction(
                                 MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
                 menu.add(0, ID_REPLACE_ALL, 0, R.string.replace_all)

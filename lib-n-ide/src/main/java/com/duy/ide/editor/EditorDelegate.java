@@ -727,7 +727,7 @@ public class EditorDelegate implements TextWatcher, IEditorDelegate {
             boolean selected = mEditText.hasSelection();
             if (selected) {
                 menu.add(0, R.id.action_find_replace, 0, R.string.find).
-                        setIcon(R.drawable.ic_find_replace_white_24dp).
+                        setIcon(R.drawable.ic_find_replace_white).
                         setAlphabeticShortcut('f').
                         setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
@@ -746,7 +746,7 @@ public class EditorDelegate implements TextWatcher, IEditorDelegate {
 
             if (!readOnly) {
                 menu.add(0, R.id.action_duplicate, 0, selected ? R.string.duplication_text : R.string.duplication_line)
-                        .setIcon(R.drawable.ic_control_point_duplicate_white_24dp)
+                        .setIcon(R.drawable.ic_control_point_duplicate_white)
                         .setAlphabeticShortcut('L')
                         .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
             }

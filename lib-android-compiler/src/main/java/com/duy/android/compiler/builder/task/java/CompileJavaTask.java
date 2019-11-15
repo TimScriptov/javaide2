@@ -79,7 +79,7 @@ public class CompileJavaTask extends Task<JavaProject> {
         }
         mCompileOptions.setEncoding(encoding);
     }
-    
+
     public boolean j6() {
         if (a()) {
             return runJavac();//вкл

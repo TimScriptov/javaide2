@@ -39,7 +39,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:scaleType="center"
-        app:srcCompat="@drawable/ic_close_black_24dp"
+        app:srcCompat="@drawable/ic_close_black"
         android:textColor="?android:textColorPrimary" />
 
 </LinearLayout>

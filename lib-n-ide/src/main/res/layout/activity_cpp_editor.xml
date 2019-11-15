@@ -98,7 +98,7 @@
                         android:layout_height="@dimen/symbol_bar_height"
                         android:scaleType="centerInside"
                         android:textColor="?android:textColorPrimary"
-                        app:srcCompat="@drawable/ic_keyboard_arrow_up_white_24dp" />
+                        app:srcCompat="@drawable/ic_keyboard_arrow_up_white" />
 
                     <HorizontalScrollView
                         android:layout_width="match_parent"

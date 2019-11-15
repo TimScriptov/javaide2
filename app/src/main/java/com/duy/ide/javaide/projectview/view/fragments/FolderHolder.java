@@ -158,7 +158,7 @@ public class FolderHolder extends TreeNode.BaseNodeViewHolder<FolderHolder.TreeI
     @Override
     public void toggle(boolean active) {
         if (!leaf) {
-            imgArrow.setImageResource(active ? R.drawable.ic_keyboard_arrow_down_white_24dp :
+            imgArrow.setImageResource(active ? R.drawable.ic_keyboard_arrow_down_white :
                     R.drawable.ic_keyboard_arrow_right_white);
         }
     }

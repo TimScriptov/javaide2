@@ -70,7 +70,7 @@
                 android:layout_height="24dp"
                 android:layout_marginLeft="4dp"
                 android:foreground="?attr/selectableItemBackground"
-                app:srcCompat="@drawable/ic_fullscreen_white_24dp" />
+                app:srcCompat="@drawable/ic_fullscreen_white" />
 
         </LinearLayout>
 

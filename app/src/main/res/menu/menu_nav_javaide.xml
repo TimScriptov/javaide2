@@ -7,7 +7,7 @@
         android:visible="true" />
     <item
         android:id="@+id/action_editor_color_scheme"
-        android:icon="@drawable/ic_color_lens_white_24dp"
+        android:icon="@drawable/ic_color_lens_white"
         android:title="@string/editor_theme"
         android:visible="true" />
 

@@ -28,7 +28,7 @@ import com.duy.ide.editor.editor.R;
 public enum MenuGroup {
     //Run, edit
     TOP(0, 0, 0),
-    FILE(R.string.file, R.id.menu_file, R.drawable.ic_folder_open_white_24dp),
+    FILE(R.string.file, R.id.menu_file, R.drawable.ic_folder_open_white),
     EDIT(R.string.edit, R.id.menu_edit, 0),
     VIEW(R.string.view, R.id.menu_view, 0),
     OTHER(R.string.other, R.id.menu_other, 0);

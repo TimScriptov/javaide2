@@ -70,7 +70,7 @@ public class IconImageView extends RoundedImageView implements Checkable {
         this.checked = checked;
         if (checked) {
             setBackgroundColor(getResources().getColor(R.color.item_icon_select_status));
-            setImageResource(R.drawable.file_checked);
+            setImageResource(R.drawable.ic_file_checked_white);
         } else {
             setBackgroundColor(defaultBackgroundColor);
             setImageResource(defaultImageResource);

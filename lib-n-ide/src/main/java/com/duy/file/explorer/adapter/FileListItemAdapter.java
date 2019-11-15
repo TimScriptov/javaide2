@@ -142,31 +142,31 @@ public class FileListItemAdapter extends RecyclerView.Adapter<BindingViewHolder<
         int color, icon;
         if (path.isDirectory()) {
             color = R.color.type_folder;
-            icon = R.drawable.file_type_folder;
+            icon = R.drawable.ic_file_type_folder_white;
 
         } else if (mimeTypes.isImageFile(path)) {
             color = R.color.type_media;
-            icon = R.drawable.file_type_image;
+            icon = R.drawable.ic_file_type_image_white;
 
         } else if (mimeTypes.isVideoFile(path)) {
             color = R.color.type_media;
-            icon = R.drawable.file_type_video;
+            icon = R.drawable.ic_file_type_video_white;
 
         } else if (mimeTypes.isAudioFile(path)) {
             color = R.color.type_media;
-            icon = R.drawable.file_type_audio;
+            icon = R.drawable.ic_file_type_audio_white;
 
         } else if (mimeTypes.isAPKFile(path)) {
             color = R.color.type_apk;
-            icon = R.drawable.file_type_apk;
+            icon = R.drawable.ic_file_type_apk_white;
 
         } else if (mimeTypes.isArchive(path)) {
             color = R.color.type_archive;
-            icon = R.drawable.file_type_archive;
+            icon = R.drawable.ic_file_type_archive_white;
 
         } else if (mimeTypes.isCodeFile(path)) {
             color = R.color.type_code;
-            icon = R.drawable.file_type_code;
+            icon = R.drawable.ic_file_type_code_white;
 
         } else {
             color = R.color.type_code;
@@ -175,10 +175,10 @@ public class FileListItemAdapter extends RecyclerView.Adapter<BindingViewHolder<
                 default:
                     if (mimeTypes.isTextFile(path)) {
                         color = R.color.type_text;
-                        icon = R.drawable.file_type_text;
+                        icon = R.drawable.ic_file_type_text_white;
                     } else {
                         color = R.color.type_file;
-                        icon = R.drawable.file_type_file;
+                        icon = R.drawable.ic_file_type_file_white;
                     }
                     break;
             }
