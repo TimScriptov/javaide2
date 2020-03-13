@@ -9,7 +9,8 @@ android {
     defaultConfig {
         applicationId "com.duy.compiler.javanide"
         minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        //noinspection OldTargetApi
+        targetSdkVersion 28
         multiDexEnabled true
         versionCode 45
         versionName "1.4.5"
@@ -96,7 +97,7 @@ dependencies {
     api project(':common')
 
     api project(':lib-n-ide')
-    api project(':layout-inflater')
+    //api project(':layout-inflater')
 
     //firebase sdk
     //api "com.google.firebase:firebase-core:16.0.0"

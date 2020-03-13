@@ -16,7 +16,7 @@ out/
 
 # Gradle files
 .gradle/
-build/
+# build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -65,3 +65,49 @@ freeline_project_description.json
 !/aosp/gradle-experimental/src/main/java/com/android/build/
 /txt.java
 !**/src/*
+/aosp/annotations/build/.transforms/
+/aosp/annotations/build/generated/source/buildConfig/debug/com/duy/aosp/annotations/
+/aosp/annotations/build/intermediates/
+/aosp/annotations/build/outputs/logs/
+/app/build/generated/
+/app/build/intermediates/
+/app/build/outputs/logs/
+/app/build/outputs/apk/debug/
+/bouncycastle/build/.transforms/
+/bouncycastle/build/generated/source/buildConfig/debug/com/duy/bouncycastle/
+/bouncycastle/build/intermediates/
+/bouncycastle/build/outputs/logs/manifest-merger-debug-report.txt
+/aosp/builder/build/.transforms/
+/aosp/builder/build/generated/source/buildConfig/debug/com/duy/aosp/builder/
+/aosp/builder/build/intermediates/
+/aosp/builder/build/outputs/logs/manifest-merger-debug-report.txt
+/aosp/builder-model/build/generated/source/buildConfig/debug/com/duy/aosp/builder/model/
+/aosp/builder-model/build/outputs/logs/
+/aosp/builder-model/build/intermediates/
+/aosp/builder-model/build/.transforms/
+/aosp/builder-test-api/build/.transforms/
+/aosp/builder-test-api/build/generated/source/buildConfig/debug/com/duy/aosp/builder/test/api/
+/aosp/builder-test-api/build/intermediates/
+/aosp/builder-test-api/build/outputs/logs/manifest-merger-debug-report.txt
+/common/build/.transforms/
+/common/build/intermediates/
+/common/build/outputs/logs/
+/common/build/generated/source/dataBinding/trigger/debug/com/jecelyin/common/
+/common/build/generated/source/buildConfig/debug/com/jecelyin/common/
+/jdk-1_7/build/.transforms/
+/jdk-1_7/build/intermediates/
+/jdk-1_7/build/generated/source/buildConfig/debug/com/duy/jdk/
+/jdk-1_7/build/outputs/logs/manifest-merger-debug-report.txt
+/lib-android-compiler/build/.transforms/
+/lib-android-compiler/build/intermediates/
+/lib-android-compiler/build/generated/source/buildConfig/debug/com/duy/javacompiler/
+/lib-android-compiler/build/outputs/logs/manifest-merger-debug-report.txt
+/lib-n-ide/build/.transforms/
+/lib-n-ide/build/intermediates/
+/lib-n-ide/build/outputs/logs/
+/lib-n-ide/build/generated/source/dataBinding/trigger/debug/com/duy/ide/editor/editor/
+/lib-n-ide/build/generated/source/buildConfig/debug/com/duy/ide/editor/editor/
+/aosp/profile/build/.transforms/
+/aosp/profile/build/outputs/logs/
+/aosp/profile/build/intermediates/
+/aosp/profile/build/generated/source/buildConfig/debug/com/duy/aosp/buildsystem/profile/
