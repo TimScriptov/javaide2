@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -72,13 +73,13 @@ public class CompileJavaTask extends Task<JavaProject> {
 
         String encoding = pref.getString(context.getString(R.string.key_pref_source_encoding), null);
         if (encoding == null || encoding.isEmpty()) {
-            encoding = Charset.forName("UTF-8").toString();
+            encoding = StandardCharsets.UTF_8.toString();
         } else {
             try {
                 Charset charset = Charset.forName(encoding);
                 encoding = charset.toString();
             } catch (Exception e) {
-                encoding = Charset.forName("UTF-8").toString();
+                encoding = StandardCharsets.UTF_8.toString();
             }
         }
         mCompileOptions.setEncoding(encoding);
