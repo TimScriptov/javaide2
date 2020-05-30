@@ -213,6 +213,11 @@ public class JavaProject {
     }
 
     @NonNull
+    public String getBootClassPath(Context context) {
+        return Environment.getBootClassPathFile(context).getAbsolutePath();
+    }
+
+    /*@NonNull
     public String getClasspath() {
         ArrayList<File> javaLibraries = getJavaLibraries();
         StringBuilder classpath = new StringBuilder(".");
@@ -223,10 +228,10 @@ public class JavaProject {
             classpath.append(javaLibrary.getAbsolutePath());
         }
         return classpath.toString();
-    }
+    }*/
 
     @NonNull
-    public String getBootClassPath(Context context) {
+    public String getClassPath(Context context) {
         return Environment.getClasspathFile(context).getAbsolutePath();
     }
 

@@ -11,7 +11,6 @@ import java.io.IOException;
 
 public class Environment {
     private static final String APP_NAME = "JavaNIDE";
-    //private static final int ANDROID_API = 29;
 
     public static void install(Context context) throws IOException {
         Assets.copyAssets(context.getAssets(), "sdk", getRootDir(context));
@@ -48,22 +47,12 @@ public class Environment {
         return classpathFile.exists();
     }
 
-    /*public static File getPlatformDir(Context context) {
-        File dir = new File(getSdkDir(context), "platforms");
-        return mkdirsIfNotExist(dir);
-    }*/
-
-    /*public static File getPlatformApiDir(Context context, int api) {
-        File dir = new File(getPlatformDir(context), "android-" + api);
-        return mkdirsIfNotExist(dir);
-    }*/
-
     public static File getClasspathFile(Context context) {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         String classpathFile = pref.getString("key_classpath", "");
         File file = new File(classpathFile);
         if (!file.exists() || classpathFile.equals("default")) {
-            file = new File(getSdkDir(context/*, ANDROID_API*/), "android.jar");
+            file = new File(getSdkDir(context), "android.jar");
         } else {
             System.out.printf("Classpath file %s not exist%n", classpathFile);
         }
@@ -74,8 +63,8 @@ public class Environment {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         String bootClassPathFile = pref.getString("key_bootclasspath", "");
         File file = new File(bootClassPathFile);
-        if (!file.exists() || bootClassPathFile.equals("default")) {
-            file = new File(getSdkDir(context/*, ANDROID_API*/), "rt.jar");
+        if (!file.exists()) {
+            file = new File(getSdkDir(context), "rt.jar");
         } else {
             System.out.printf("Classpath file %s not exist%n", bootClassPathFile);
         }

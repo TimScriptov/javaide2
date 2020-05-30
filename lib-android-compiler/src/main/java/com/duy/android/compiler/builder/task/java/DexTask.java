@@ -63,7 +63,7 @@ public class DexTask extends Task<JavaProject> {
                 dexLib.mkdir();
             }
 
-            String[] args = getLibArgs(dexLib.getAbsolutePath(), jarLib.getAbsolutePath(), mBuilder.getBootClassPath());
+            String[] args = getLibArgs(dexLib.getAbsolutePath(), jarLib.getAbsolutePath(), mProject.getBootClassPath(context));
 
             mBuilder.stdout("Dexing lib " + jarLib.getPath() + " => " + dexLib.getAbsolutePath());
             com.android.tools.r8.D8.main(args);
@@ -91,7 +91,7 @@ public class DexTask extends Task<JavaProject> {
         mBuilder.stdout("Merge build classes");
 
         File buildClasseDir = project.getDirBuildClasses();
-        String[] args = getArgs(buildClasseDir.getAbsolutePath(), project.getDexFile().getAbsolutePath(), mBuilder.getBootClassPath());
+        String[] args = getArgs(buildClasseDir.getAbsolutePath(), project.getDexFile().getAbsolutePath(), mProject.getBootClassPath(context));
         com.android.tools.r8.D8.main(args);
         mBuilder.stdout("Merged build classes " + project.getDexFile().getName());
         return true;
@@ -153,6 +153,8 @@ public class DexTask extends Task<JavaProject> {
         mBuilder.stdout("Merge all dexed files completed");
         return true;
     }
+
+
 
     private File[] getLibs(File f) {
         ArrayList<File> files = new ArrayList<>();

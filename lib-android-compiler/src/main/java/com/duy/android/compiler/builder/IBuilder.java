@@ -19,7 +19,7 @@ public interface IBuilder<T extends JavaProject> {
 
     boolean isVerbose();
 
-    String getBootClassPath();
+    //String getBootClassPath();
 
     PrintStream getStderr();
 

@@ -137,7 +137,7 @@ public class ProcessAndroidResourceTask extends Task<AndroidAppProject> {
                 args.add("--non-constant-id"); //non constant for library
                 args.add("-M", library.getManifest().getAbsolutePath());  //manifest file
                 args.add("-A", library.getAssetsFolder().getAbsolutePath()); //input assets dir
-                args.add("-I", mProject.getBootClassPath(context));//The location of the android.jar resource
+                args.add("-I", mProject.getClassPath(context));//The location of the android.jar resource
                 args.add("-S", library.getResFolder().getAbsolutePath());  //input resource dir
                 args.add("-m"); // make package directories under location specified by -J
                 //specify where to output R.java resource constant definitions
@@ -158,7 +158,7 @@ public class ProcessAndroidResourceTask extends Task<AndroidAppProject> {
         args.add("-v");
         args.add("-M", mProject.getManifestFile().getAbsolutePath());  //manifest file
         args.add("-F", mProject.getProcessResourcePackageOutputFile().getAbsolutePath());  //output resources.ap_
-        args.add("-I", mProject.getBootClassPath(context));//The location of the android.jar resource
+        args.add("-I", mProject.getClassPath(context));//The location of the android.jar resource
         args.add("-A", mProject.getAssetsDir().getAbsolutePath()); //input assets dir
         args.add("-S", mProject.getResDirs().getAbsolutePath());  //input resource dir
 

@@ -10,6 +10,7 @@ import com.duy.android.compiler.builder.internal.CompileOptions;
 import com.duy.android.compiler.builder.internal.JavaVersion;
 import com.duy.android.compiler.builder.task.Task;
 import com.duy.android.compiler.builder.util.Argument;
+import com.duy.android.compiler.env.Environment;
 import com.duy.android.compiler.project.JavaProject;
 import com.duy.javacompiler.R;
 
@@ -85,8 +86,8 @@ public class CompileJavaTask extends Task<JavaProject> {
 
         Argument argument = new Argument();
         argument.add(mBuilder.isVerbose() ? "-verbose" : "-warn:");
-        argument.add("-bootclasspath", mBuilder.getBootClassPath());
-        argument.add("-classpath", mProject.getClasspath());
+        argument.add("-bootclasspath", mProject.getBootClassPath(context));
+        argument.add("-classpath", mProject.getClassPath(context));
         argument.add("-sourcepath", mProject.getSourcePath());
         argument.add("-d", mProject.getDirBuildClasses().getAbsolutePath()); // The location of the output folder
 
@@ -108,8 +109,8 @@ public class CompileJavaTask extends Task<JavaProject> {
 
         Argument argument = new Argument();
         argument.add(mBuilder.isVerbose() ? "-verbose" : "-warn:");
-        argument.add("-bootclasspath", mBuilder.getBootClassPath());
-        argument.add("-classpath", mProject.getClasspath());
+        argument.add("-bootclasspath", mProject.getBootClassPath(context));
+        argument.add("-classpath", mProject.getClassPath(context));
         argument.add("-sourcepath", mProject.getSourcePath());
         argument.add("-" + mCompileOptions.getSourceCompatibility().toString()); //host
         argument.add("-target", mCompileOptions.getTargetCompatibility().toString()); //target
