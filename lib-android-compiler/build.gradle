@@ -50,7 +50,7 @@ dependencies {
     api project(':jdk-1_7')
     api project(':aosp:builder')
     api project(':common')
-    api 'org.eclipse.jdt.core.compiler:ecj:4.6.1'
+    //api 'org.eclipse.jdt.core.compiler:ecj:4.6.1'
     api 'net.sf.kxml:kxml2:2.3.0'
 
     //api 'org.gradle:gradle-core:2.2.1'

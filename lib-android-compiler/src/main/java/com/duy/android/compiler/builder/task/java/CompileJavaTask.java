@@ -39,11 +39,6 @@ public class CompileJavaTask extends Task<JavaProject> {
         return context.getSharedPreferences("com.duy.compiler.javanide_preferences", 0).getBoolean("key_pref_java_compiler_select", false);
     }
 
-    public static void javac(String[] zArgs) {
-        com.sun.tools.javac.Main main = new com.sun.tools.javac.Main();
-        main.compile(zArgs);
-    }
-
     @Override
     public String getTaskName() {
         return "Compile java source";

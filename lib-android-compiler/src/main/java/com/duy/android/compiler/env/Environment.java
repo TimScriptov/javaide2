@@ -60,12 +60,24 @@ public class Environment {
 
     public static File getClasspathFile(Context context) {
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
-        String classpathFile = pref.getString(context.getString(R.string.key_classpath), "");
+        String classpathFile = pref.getString("key_classpath", "");
         File file = new File(classpathFile);
         if (!file.exists() || classpathFile.equals("default")) {
             file = new File(getSdkDir(context/*, ANDROID_API*/), "android.jar");
         } else {
             System.out.printf("Classpath file %s not exist%n", classpathFile);
+        }
+        return file;
+    }
+
+    public static File getBootClassPathFile(Context context) {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        String bootClassPathFile = pref.getString("key_bootclasspath", "");
+        File file = new File(bootClassPathFile);
+        if (!file.exists() || bootClassPathFile.equals("default")) {
+            file = new File(getSdkDir(context/*, ANDROID_API*/), "rt.jar");
+        } else {
+            System.out.printf("Classpath file %s not exist%n", bootClassPathFile);
         }
         return file;
     }
