@@ -152,13 +152,11 @@ public class DexTask extends Task<JavaProject> {
         alist.add("--lib");
         alist.add(lib);
 
-
         List<String> cl = classes(input);
 
         alist.addAll(cl);
 
-        String[] arr = alist.toArray(new String[0]);
-        return arr;
+        return alist.toArray(new String[0]);
     }
 
     private static List<String> classes(String absolutePath)
@@ -185,7 +183,6 @@ public class DexTask extends Task<JavaProject> {
                 lst.add(f.getAbsolutePath());
             }
         }
-        return;
     }
 
     private boolean dexMerge(@NonNull JavaProject projectFile) throws IOException {

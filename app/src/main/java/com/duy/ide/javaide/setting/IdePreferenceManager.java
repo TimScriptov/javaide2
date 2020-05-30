@@ -43,6 +43,5 @@ public class IdePreferenceManager {
         //default theme
         preferences.setAppTheme(1);
         preferences.setEditorTheme("allure-contrast.json.properties");
-
     }
 }

@@ -181,23 +181,4 @@ public class SplashScreenActivity extends AppCompatActivity {
         File[] files = rootProject.listFiles();
         if (DLog.DEBUG) DLog.d(TAG, "files = " + Arrays.toString(files));
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

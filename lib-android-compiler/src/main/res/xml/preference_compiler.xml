@@ -14,40 +14,33 @@
             android:defaultValue="false"
             android:key="key_pref_dex_compiler_select"
             android:title="Использовать d8"
-            android:summary="По умолчанию используется dx">
-
-        </SwitchPreference>
+            android:summary="По умолчанию используется dx"/>
 
         <ListPreference
             android:defaultValue="1.7"
             android:entries="@array/entries_java_versions"
             android:entryValues="@array/entries_java_versions"
             android:key="@string/key_pref_source_compatibility"
-            android:title="Source compatibility">
+            android:title="Source compatibility"/>
 
-        </ListPreference>
         <ListPreference
             android:defaultValue="1.7"
             android:entries="@array/entries_java_versions"
             android:entryValues="@array/entries_java_versions"
             android:key="@string/key_pref_target_compatibility"
-            android:title="Target compatibility">
+            android:title="Target compatibility"/>
 
-        </ListPreference>
         <EditTextPreference
             android:defaultValue="UTF-8"
             android:enabled="false"
             android:key="@string/key_pref_source_encoding"
             android:title="Encoding" />
 
-
         <EditTextPreference
             android:defaultValue="@string/default_classpath"
             android:key="@string/key_classpath"
             android:summary="@string/classpath_desc"
-            android:title="Classpath (android.jar)">
-
-        </EditTextPreference>
+            android:title="Classpath (android.jar)"/>
 
         <ListPreference
             android:defaultValue="0"
@@ -57,8 +50,6 @@
             android:summary="google-java-format is a program that reformats Java source code to comply with Google Java Style."
             android:title="@string/pref_title_java_format_type" />
 
-
     </PreferenceCategory>
-
 
 </PreferenceScreen>

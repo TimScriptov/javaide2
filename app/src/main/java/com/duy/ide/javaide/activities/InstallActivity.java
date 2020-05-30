@@ -54,7 +54,6 @@ public class InstallActivity extends BaseActivity {
         new InstallTask(this).execute();
     }
 
-
     private void installSuccess() {
         setResult(RESULT_OK);
         finish();
@@ -125,5 +124,4 @@ public class InstallActivity extends BaseActivity {
             mIsInstalling = false;
         }
     }
-
 }

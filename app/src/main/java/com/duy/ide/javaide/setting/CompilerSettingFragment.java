@@ -18,20 +18,21 @@
 package com.duy.ide.javaide.setting;
 
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
-import androidx.annotation.Nullable;
-
-import com.duy.common.preferences.PreferencesNative;
+import androidx.preference.EditTextPreference;
+import androidx.preference.ListPreference;
+import androidx.preference.PreferenceFragmentCompat;
 import com.duy.ide.R;
 
-public class CompilerSettingFragment extends PreferenceFragment {
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.preference_compiler);
-        PreferencesNative.bindPreferenceSummaryToValue(findPreference(getString(R.string.key_pref_source_compatibility)));
-        PreferencesNative.bindPreferenceSummaryToValue(findPreference(getString(R.string.key_pref_target_compatibility)));
-        PreferencesNative.bindPreferenceSummaryToValue(findPreference(getString(R.string.key_pref_source_encoding)));
+public class CompilerSettingFragment extends PreferenceFragmentCompat {
+    private ListPreference key_pref_source_compatibility;
+    private ListPreference key_pref_target_compatibility;
+    private EditTextPreference key_pref_source_encoding;
 
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+        addPreferencesFromResource(R.xml.preference_compiler);
+        key_pref_source_compatibility = findPreference("key_pref_source_compatibility");
+        key_pref_target_compatibility = findPreference("key_pref_target_compatibility");
+        key_pref_source_encoding = findPreference("key_pref_source_encoding");
     }
 }

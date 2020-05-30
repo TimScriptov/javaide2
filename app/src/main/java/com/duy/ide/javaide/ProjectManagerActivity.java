@@ -309,6 +309,4 @@ public abstract class ProjectManagerActivity extends IdeActivity
     protected void toast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-
-
 }

@@ -17,6 +17,7 @@
 
 package com.duy.ide.javaide.activities;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import androidx.annotation.StyleRes;
 import androidx.appcompat.widget.Toolbar;
@@ -28,6 +29,7 @@ import com.jecelyin.editor.v2.ThemeSupportActivity;
  * Created by duy on 18/07/2017.
  */
 
+@SuppressLint("Registered")
 public class BaseActivity extends ThemeSupportActivity
         implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -44,5 +46,4 @@ public class BaseActivity extends ThemeSupportActivity
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
-
 }

@@ -77,6 +77,4 @@ public class PreferencesUtil {
                         .getDefaultSharedPreferences(preference.getContext())
                         .getString(preference.getKey(), ""));
     }
-
-
 }
