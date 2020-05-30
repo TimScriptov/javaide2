@@ -88,16 +88,13 @@ public class DexTask extends Task<JavaProject> {
         mBuilder.stdout("Dex libs");
         ArrayList<File> javaLibraries = project.getJavaLibraries();
         for (File jarLib : javaLibraries) {
-            // compare hash of jar contents to name of dexed version
-            String md5 = MD5Hash.getMD5Checksum(jarLib);
 
-            File dexLib = new File(project.getDirBuildDexedLibs(), jarLib.getName().replace(".jar", "-" + md5 + ".dex"));
-            if (dexLib.exists()) {
-                mBuilder.stdout("Lib " + jarLib.getPath() + " has been dexed with cached file " + dexLib.getName());
-                continue;
+            File dexLib = new File(jarLib.getParentFile(), jarLib.getName().replace(".jar", ""));
+            if(!dexLib.exists()){
+                dexLib.mkdir();
             }
 
-            String[] args = getArgs(dexLib.getAbsolutePath(), jarLib.getAbsolutePath(), mBuilder.getBootClassPath());
+            String[] args = getLibArgs(dexLib.getAbsolutePath(), jarLib.getAbsolutePath(), mBuilder.getBootClassPath());
 
             mBuilder.stdout("Dexing lib " + jarLib.getPath() + " => " + dexLib.getAbsolutePath());
             com.android.tools.r8.D8.main(args);
@@ -105,6 +102,17 @@ public class DexTask extends Task<JavaProject> {
         }
         mBuilder.stdout("Dex libs completed");
         return true;
+    }
+
+    private static String[] getLibArgs(String dex, String jar, String lib) {
+        ArrayList<String> alist = new ArrayList<>();
+        alist.add("--output");
+        alist.add(dex);
+        alist.add("--lib");
+        alist.add(lib);
+        alist.add(jar);
+
+        return alist.toArray(new String[0]);
     }
 
     /**
