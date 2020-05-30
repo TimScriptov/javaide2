@@ -33,6 +33,11 @@ public class CompileJavaTask extends Task<JavaProject> {
         super(builder);
     }
 
+    private boolean prefJavaC() {
+        PreferenceManager.getDefaultSharedPreferences(context);
+        return context.getSharedPreferences("com.duy.compiler.javanide_preferences", 0).getBoolean("key_pref_java_compiler_select", false);
+    }
+
     public static void javac(String[] zArgs) {
         com.sun.tools.javac.Main main = new com.sun.tools.javac.Main();
         main.compile(zArgs);
@@ -45,8 +50,7 @@ public class CompileJavaTask extends Task<JavaProject> {
 
     public boolean doFullTaskAction() {
         loadCompilerOptions();
-        //return runEcj();
-        return j6();
+        return prefJavaC() ? runJavac() : runEcj();
     }
 
     private void loadCompilerOptions() {
@@ -78,18 +82,6 @@ public class CompileJavaTask extends Task<JavaProject> {
             }
         }
         mCompileOptions.setEncoding(encoding);
-    }
-
-    public boolean j6() {
-        if (a()) {
-            return runJavac();//вкл
-        }
-        return runEcj();//выкл
-    }
-
-    public boolean a() {
-        PreferenceManager.getDefaultSharedPreferences(context);
-        return context.getSharedPreferences("com.duy.compiler.javanide_preferences", 0).getBoolean("key_pref_java_compiler_select", false);
     }
 
     private boolean runJavac() {

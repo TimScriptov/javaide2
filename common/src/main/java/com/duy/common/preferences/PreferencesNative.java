@@ -101,6 +101,4 @@ public class PreferencesNative {
             e.printStackTrace();
         }
     }
-
-
 }

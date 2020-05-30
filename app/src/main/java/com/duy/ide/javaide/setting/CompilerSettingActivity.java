@@ -39,5 +39,4 @@ public class CompilerSettingActivity extends BaseActivity {
         fragmentTransaction.replace(R.id.content, new CompilerSettingFragment());
         fragmentTransaction.commit();
     }
-
 }

@@ -1,6 +1,8 @@
 package com.duy.android.compiler.builder.task.java;
 
 import androidx.annotation.NonNull;
+
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.android.dx.command.dexer.DxContext;
@@ -16,12 +18,18 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DexTask extends Task<JavaProject> {
     private static final String TAG = "Dexer";
 
     public DexTask(IBuilder<? extends JavaProject> builder) {
         super(builder);
+    }
+
+    private boolean prefD8() {
+        PreferenceManager.getDefaultSharedPreferences(context);
+        return context.getSharedPreferences("com.duy.compiler.javanide_preferences", 0).getBoolean("key_pref_dex_compiler_select", false);
     }
 
     @Override
@@ -35,12 +43,14 @@ public class DexTask extends Task<JavaProject> {
 
         mBuilder.stdout("Android dx");
 
-        if (!dexLibs(mProject)) {
+        if (prefD8() ? !dexLibsD8(mProject) : !dexLibs(mProject)) {
             return false;
         }
-        if (!dexBuildClasses(mProject)) {
+
+        if (prefD8() ? !dexBuildClassesD8(mProject) : !dexBuildClasses(mProject)) {
             return false;
         }
+
         if (!dexMerge(mProject)) {
             return false;
         }
@@ -74,6 +84,29 @@ public class DexTask extends Task<JavaProject> {
         return true;
     }
 
+    private boolean dexLibsD8(@NonNull JavaProject project) throws Exception {
+        mBuilder.stdout("Dex libs");
+        ArrayList<File> javaLibraries = project.getJavaLibraries();
+        for (File jarLib : javaLibraries) {
+            // compare hash of jar contents to name of dexed version
+            String md5 = MD5Hash.getMD5Checksum(jarLib);
+
+            File dexLib = new File(project.getDirBuildDexedLibs(), jarLib.getName().replace(".jar", "-" + md5 + ".dex"));
+            if (dexLib.exists()) {
+                mBuilder.stdout("Lib " + jarLib.getPath() + " has been dexed with cached file " + dexLib.getName());
+                continue;
+            }
+
+            String[] args = getArgs(dexLib.getAbsolutePath(), jarLib.getAbsolutePath(), mBuilder.getBootClassPath());
+
+            mBuilder.stdout("Dexing lib " + jarLib.getPath() + " => " + dexLib.getAbsolutePath());
+            com.android.tools.r8.D8.main(args);
+            mBuilder.stdout("Dexed lib " + dexLib.getAbsolutePath());
+        }
+        mBuilder.stdout("Dex libs completed");
+        return true;
+    }
+
     /**
      * Merge all classed has been build by {@link CompileJavaTask} to a single file .dex
      */
@@ -89,6 +122,62 @@ public class DexTask extends Task<JavaProject> {
         com.android.dx.command.dexer.Main.main(args);
         mBuilder.stdout("Merged build classes " + project.getDexFile().getName());
         return true;
+    }
+
+    private boolean dexBuildClassesD8(@NonNull JavaProject project) throws IOException {
+        mBuilder.stdout("Merge build classes");
+
+        File buildClasseDir = project.getDirBuildClasses();
+        String[] args = getArgs(buildClasseDir.getAbsolutePath() ,project.getDexFile().getAbsolutePath(), mBuilder.getBootClassPath());
+        com.android.tools.r8.D8.main(args);
+        mBuilder.stdout("Merged build classes " + project.getDexFile().getName());
+        return true;
+    }
+
+    private static String[] getArgs(String input, String output, String lib)
+    {
+        ArrayList<String> alist = new ArrayList<String>();
+        File f = new File(output);
+        String outPath = f.getParentFile().getAbsolutePath();
+        alist.add("--output");
+        alist.add(outPath);
+        alist.add("--lib");
+        alist.add(lib);
+
+
+        List<String> cl = classes(input);
+
+        alist.addAll(cl);
+
+        String[] arr = alist.toArray(new String[0]);
+        return arr;
+    }
+
+    private static List<String> classes(String absolutePath)
+    {
+        ArrayList<String> list = new ArrayList<String>();
+        walk(absolutePath, list);
+
+        return list;
+    }
+
+    private static void walk( String path, List<String> lst ) {
+
+        File root = new File( path );
+        File[] list = root.listFiles();
+
+        if (list == null) return;
+
+        for ( File f : list ) {
+            if ( f.isDirectory() ) {
+                walk( f.getAbsolutePath(), lst );
+
+            }
+            else {
+                lst.add(f.getAbsolutePath());
+            }
+        }
+        return;
     }
 
     private boolean dexMerge(@NonNull JavaProject projectFile) throws IOException {

@@ -109,5 +109,4 @@ public class JavaApplication extends MultiDexApplication {
             }
         }
     }
-
 }

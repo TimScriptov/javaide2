@@ -28,9 +28,9 @@ android {
 
 dependencies {
     api 'androidx.appcompat:appcompat:1.1.0'
-    api 'androidx.recyclerview:recyclerview:1.0.0'
+    api 'androidx.recyclerview:recyclerview:1.1.0'
     api 'androidx.annotation:annotation:1.1.0'
-    api 'com.google.android.material:material:1.0.0'
+    api 'com.google.android.material:material:1.1.0'
     api 'androidx.legacy:legacy-support-v13:1.0.0'
     api 'com.afollestad.material-dialogs:commons:0.9.6.0'
     api 'me.zhanghai.android.materialprogressbar:library:1.1.4'

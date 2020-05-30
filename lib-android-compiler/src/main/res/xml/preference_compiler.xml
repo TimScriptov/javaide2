@@ -10,6 +10,14 @@
 
         </SwitchPreference>
 
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="key_pref_dex_compiler_select"
+            android:title="Использовать d8"
+            android:summary="По умолчанию используется dx">
+
+        </SwitchPreference>
+
         <ListPreference
             android:defaultValue="1.7"
             android:entries="@array/entries_java_versions"
