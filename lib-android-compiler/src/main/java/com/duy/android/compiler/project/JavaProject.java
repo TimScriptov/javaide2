@@ -217,8 +217,8 @@ public class JavaProject {
         return Environment.getBootClassPathFile(context).getAbsolutePath();
     }
 
-    /*@NonNull
-    public String getClasspath() {
+    @NonNull
+    public String getClassPathLibs() {
         ArrayList<File> javaLibraries = getJavaLibraries();
         StringBuilder classpath = new StringBuilder(".");
         for (File javaLibrary : javaLibraries) {
@@ -228,7 +228,7 @@ public class JavaProject {
             classpath.append(javaLibrary.getAbsolutePath());
         }
         return classpath.toString();
-    }*/
+    }
 
     @NonNull
     public String getClassPath(Context context) {

@@ -87,7 +87,7 @@ public class CompileJavaTask extends Task<JavaProject> {
         Argument argument = new Argument();
         argument.add(mBuilder.isVerbose() ? "-verbose" : "-warn:");
         argument.add("-bootclasspath", mProject.getBootClassPath(context));
-        argument.add("-classpath", mProject.getClassPath(context));
+        argument.add("-classpath", mProject.getClassPath(context) + ":" + mProject.getClassPathLibs());
         argument.add("-sourcepath", mProject.getSourcePath());
         argument.add("-d", mProject.getDirBuildClasses().getAbsolutePath()); // The location of the output folder
 
@@ -108,9 +108,10 @@ public class CompileJavaTask extends Task<JavaProject> {
                 new org.eclipse.jdt.internal.compiler.batch.Main(outWriter, errWriter, false, null, null);
 
         Argument argument = new Argument();
-        argument.add(mBuilder.isVerbose() ? "-verbose" : "-warn:");
+        argument.add(mBuilder.isVerbose() ? "-verbose" : "-warn:-unusedImport");
+        argument.add("-extdirs", mProject.getClassPathLibs());
         argument.add("-bootclasspath", mProject.getBootClassPath(context));
-        argument.add("-classpath", mProject.getClassPath(context));
+        argument.add("-classpath", mProject.getClassPath(context) + ":" + mProject.getClassPathLibs());
         argument.add("-sourcepath", mProject.getSourcePath());
         argument.add("-" + mCompileOptions.getSourceCompatibility().toString()); //host
         argument.add("-target", mCompileOptions.getTargetCompatibility().toString()); //target
