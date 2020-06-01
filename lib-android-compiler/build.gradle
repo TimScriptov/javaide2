@@ -45,7 +45,7 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
     api project(':bouncycastle')
-    api project(':dx')
+    //api project(':dx')
     api project(':d8')
     api project(':jdk-1_7')
     api project(':aosp:builder')

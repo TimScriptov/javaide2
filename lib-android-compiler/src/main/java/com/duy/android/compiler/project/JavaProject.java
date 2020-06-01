@@ -218,7 +218,7 @@ public class JavaProject {
     }
 
     @NonNull
-    public String getClassPathLibs() {
+    public String getLibsPath() {
         ArrayList<File> javaLibraries = getJavaLibraries();
         StringBuilder classpath = new StringBuilder(".");
         for (File javaLibrary : javaLibraries) {
@@ -246,6 +246,23 @@ public class JavaProject {
         }
         srcPath.append(File.pathSeparator).append(dirGeneratedSource.getAbsolutePath());
         return srcPath.toString();
+    }
+
+    @CallSuper
+    public String getJavaPath() {
+        StringBuilder srcPath = new StringBuilder();
+        for (File javaSrcDir : javaSrcDirs) {
+            if (srcPath.length() != 0) {
+                srcPath.append(File.pathSeparator);
+            }
+            srcPath.append(javaSrcDir.getAbsolutePath());
+        }
+        return srcPath.toString();
+    }
+
+    @CallSuper
+    public String getGenPath() {
+        return dirGeneratedSource.getAbsolutePath();
     }
 
     public File getRootDir() {
