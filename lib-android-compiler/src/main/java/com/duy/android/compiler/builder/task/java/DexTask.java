@@ -2,14 +2,20 @@ package com.duy.android.compiler.builder.task.java;
 
 import androidx.annotation.NonNull;
 
+import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.android.dx.command.dexer.DxContext;
 import com.duy.android.compiler.builder.IBuilder;
 import com.duy.android.compiler.builder.task.Task;
 import com.duy.android.compiler.builder.util.MD5Hash;
 import com.duy.android.compiler.project.JavaProject;
+import com.android.dex.Dex;
+import com.android.dx.merge.CollisionPolicy;
+import com.android.dx.merge.DexMerger;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +43,10 @@ public class DexTask extends Task<JavaProject> {
         }
 
         if (!dexBuildClassesD8(mProject)) {
+            return false;
+        }
+
+        if (!dexMerge(mProject)) {
             return false;
         }
         return true;
@@ -79,18 +89,17 @@ public class DexTask extends Task<JavaProject> {
      */
     private boolean dexBuildClassesD8(@NonNull JavaProject project) throws IOException {
         mBuilder.stdout("Merge build classes");
-        File buildClasseDir = project.getDirBuildClasses();
 
+        File buildClasseDir = project.getDirBuildClasses();
         String[] args = getArgs(buildClasseDir.getAbsolutePath(), project.getDexFile().getAbsolutePath(), mProject.getBootClassPath(context));
         com.android.tools.r8.D8.main(args);
         mBuilder.stdout("Merged build classes " + project.getDexFile().getName());
         return true;
     }
 
-    private String[] getArgs(String input, String output, String lib)  {
-        ArrayList<String> alist = new ArrayList<>();
+    private static String[] getArgs(String input, String output, String lib)  {
+        ArrayList<String> alist = new ArrayList<String>();
         File f = new File(output);
-
         String outPath = f.getParentFile().getAbsolutePath();
         alist.add("--output");
         alist.add(outPath);
@@ -98,9 +107,8 @@ public class DexTask extends Task<JavaProject> {
         alist.add(lib);
 
         List<String> cl = classes(input);
-        List<String> libs = classes(mProject.getDirBuildDexedLibs().toString());
+
         alist.addAll(cl);
-        alist.addAll(libs);
 
         return alist.toArray(new String[0]);
     }
@@ -108,10 +116,12 @@ public class DexTask extends Task<JavaProject> {
     private static List<String> classes(String absolutePath) {
         ArrayList<String> list = new ArrayList<String>();
         walk(absolutePath, list);
+
         return list;
     }
 
     private static void walk( String path, List<String> lst ) {
+
         File root = new File( path );
         File[] list = root.listFiles();
 
@@ -120,13 +130,15 @@ public class DexTask extends Task<JavaProject> {
         for ( File f : list ) {
             if ( f.isDirectory() ) {
                 walk( f.getAbsolutePath(), lst );
-            } else {
+
+            }
+            else {
                 lst.add(f.getAbsolutePath());
             }
         }
     }
 
-    /*private boolean dexMerge(@NonNull JavaProject projectFile) throws IOException {
+    private boolean dexMerge(@NonNull JavaProject projectFile) throws IOException {
         mBuilder.stdout("Merge dex files");
         File[] dexedLibs = getLibs(projectFile.getDirBuildDexedLibs());
 
@@ -171,7 +183,7 @@ public class DexTask extends Task<JavaProject> {
                 lst.add(f);
             }
         }
-    }*/
+    }
 
     /*private boolean dexMerge(@NonNull JavaProject projectFile) throws IOException {
         mBuilder.stdout("Merge dex files");

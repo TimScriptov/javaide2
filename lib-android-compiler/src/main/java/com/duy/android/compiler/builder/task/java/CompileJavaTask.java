@@ -87,7 +87,7 @@ public class CompileJavaTask extends Task<JavaProject> {
         Argument argument = new Argument();
         argument.add(mBuilder.isVerbose() ? "-verbose" : "-warn:");
         argument.add("-bootclasspath", mProject.getBootClassPath(context));
-        argument.add("-classpath", mProject.getClassPath(context) + ":" + mProject.getLibsPath());
+        argument.add("-classpath", mProject.getClassPath(context) + ":" + mProject.getClassPathLibs());
         argument.add("-sourcepath", mProject.getSourcePath());
         argument.add("-d", mProject.getDirBuildClasses().getAbsolutePath()); // The location of the output folder
 
@@ -109,18 +109,14 @@ public class CompileJavaTask extends Task<JavaProject> {
 
         Argument argument = new Argument();
         argument.add(mBuilder.isVerbose() ? "-verbose" : "-warn:-unusedImport");
-        argument.add("-extdirs", mProject.getLibsPath()); // The location of the external libraries (Processing's core.jar and others)
-        argument.add("-bootclasspath", mProject.getBootClassPath(context) // The location of rt.jar
-                + ":" + mProject.getClassPath(context)); // The location of android.jar
-        argument.add("-classpath", mProject.getJavaPath() // The location of the source folder
-                + ":" + mProject.getGenPath() // The location of the generated folder
-                + ":" + mProject.getLibsPath()); // The location of the library folder
-        //argument.add("-sourcepath", mProject.getJavaPath()); // The location of the source folder
+        argument.add("-extdirs", mProject.getClassPathLibs());
+        argument.add("-bootclasspath", mProject.getBootClassPath(context));
+        argument.add("-classpath", mProject.getClassPath(context) + ":" + mProject.getClassPathLibs());
+        argument.add("-sourcepath", mProject.getSourcePath());
         argument.add("-" + mCompileOptions.getSourceCompatibility().toString()); //host
         argument.add("-target", mCompileOptions.getTargetCompatibility().toString()); //target
         argument.add("-proc:none"); // Disable annotation processors...
-        argument.add("-d", mProject.getDirBuildClasses().getAbsolutePath() // The location of the output folder
-        + ":" + mProject.getGenPath()); // The location of the generated folder
+        argument.add("-d", mProject.getDirBuildClasses().getAbsolutePath()); // The location of the output folder
 
         String[] sourceFiles = getAllSourceFiles(mProject);
         argument.add(sourceFiles);
